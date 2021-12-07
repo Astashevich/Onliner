@@ -1,4 +1,4 @@
-package by.onliner.drivers;
+package by.onliner.driver;
 
 import org.openqa.selenium.WebDriver;
 
@@ -19,7 +19,7 @@ public class DriverManager {
     /***
      * Sets the value in a copy of the current thread by this thread-local variable
      * @param driver
-     * @return webdriver of the current thread
+     * @return webdriver of the current thread.
      */
     public static void setDriver(WebDriver driver) {threadDriver.set(driver);}
 

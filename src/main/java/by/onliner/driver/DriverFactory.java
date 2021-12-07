@@ -1,4 +1,4 @@
-package by.onliner.drivers;
+package by.onliner.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
@@ -21,7 +21,7 @@ public class DriverFactory {
      * Chooses a webdriver of a defined type
      * @param browser
      */
-    public static WebDriver getDrive(BrowserType browser) {
+    public static WebDriver getDriver(BrowserType browser) {
             WebDriver driver = null;
             switch (browser) {
                 case FIREFOX:
