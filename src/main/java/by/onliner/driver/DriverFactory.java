@@ -12,17 +12,16 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 
-
 public class DriverFactory {
 
     public enum BrowserType {FIREFOX, CHROME, EDGE, OPERA}
 
     /***
      * Chooses a webdriver of a defined type
-     * @param browser
+     * @param browser type
      */
     public static WebDriver getDriver(BrowserType browser) {
-            WebDriver driver = null;
+            WebDriver driver;
             switch (browser) {
                 case FIREFOX:
                     driver = getGeckoDriver();
@@ -36,6 +35,8 @@ public class DriverFactory {
                 case OPERA:
                     driver = getOperaDriver();
                     break;
+                default:
+                    throw new RuntimeException("Incorrect browser");
             }
             return driver;
     }

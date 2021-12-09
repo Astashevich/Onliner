@@ -1,6 +1,8 @@
-package by.onliner.page;
+package by.onliner.page.pages;
 
-import by.onliner.util.MoveTo;
+import by.onliner.driver.DriverManager;
+import by.onliner.page.AbstractPage;
+import by.onliner.util.ActionsHelper;
 import by.onliner.util.Waiter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,19 +10,19 @@ import org.openqa.selenium.support.FindBy;
 public class ShoppingCartPage extends AbstractPage {
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__title')]")
-    WebElement openedShoppingCartMessage;
+    private WebElement openedShoppingCartMessage;
 
     @FindBy(className = "cart-form__control")
-    WebElement removeFromCartButton;
+    private WebElement removeFromCartButton;
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__offers-unit_primary')]")
-    WebElement Item;
+    private WebElement cartUnit;
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__description_condensed-extra')]")
-    WebElement removedItemInformation;
+    private WebElement removedItemInformation;
 
     @FindBy(xpath = "//div[contains(@class, 'cart-message__title_big')]")
-    WebElement emptyCartMessage;
+    private WebElement emptyCartMessage;
 
     public ShoppingCartPage() {
         super();
@@ -36,9 +38,7 @@ public class ShoppingCartPage extends AbstractPage {
      */
     public void removeItemFromCart() {
         Waiter.waitForVisibility(removeFromCartButton);
-        MoveTo.moveToElementAndClick(removeFromCartButton);
-        //MoveTo.clickElement(removeFromCartButton);
-        //removeFromCartButton.click();
+        ActionsHelper.moveToElementAndClick(removeFromCartButton);
     }
 
     /***
@@ -53,6 +53,7 @@ public class ShoppingCartPage extends AbstractPage {
      * Get a message from empty cart.
      */
     public String getEmptyCartMassage() {
+        DriverManager.getDriver().navigate().refresh();
         Waiter.waitForVisibility(emptyCartMessage);
         return emptyCartMessage.getText();
     }

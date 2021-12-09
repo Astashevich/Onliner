@@ -18,20 +18,17 @@ public class DriverManager {
 
     /***
      * Sets the value in a copy of the current thread by this thread-local variable
-     * @param driver
-     * @return webdriver of the current thread.
+     * @param driver of the local thread
      */
     public static void setDriver(WebDriver driver) {threadDriver.set(driver);}
 
     /***
      *  Remove the value in a copy of the current thread by this thread-local variable
-     * @param driver
+     * @param driver of the local thread
      */
     public static void quitDriver(WebDriver driver) {
         if (driver != null) {
             driver.quit();
         }
     }
-
-
 }

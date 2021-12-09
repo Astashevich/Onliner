@@ -1,11 +1,11 @@
-package by.onliner.dto;
+package by.onliner.page.components;
 
-import by.onliner.page.AbstractPage;
+import by.onliner.page.AbstractComponent;
 import by.onliner.util.Waiter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class Menu extends AbstractPage {
+public class Menu extends AbstractComponent {
 
     @FindBy(className = "auth-bar__item--cart")
     private WebElement shoppingCartButton;
@@ -21,7 +21,7 @@ public class Menu extends AbstractPage {
     }
 
     @Override
-    public void waitForPageOpened() {
+    public void waitForComponentOpened() {
         Waiter.waitForVisibility(shoppingCartButton);
     }
 
@@ -29,6 +29,7 @@ public class Menu extends AbstractPage {
      * Click on the shopping cart button.
      */
     public void openShoppingCartPage() {
+        waitForComponentOpened();
         shoppingCartButton.click();
     }
 }

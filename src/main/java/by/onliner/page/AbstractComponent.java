@@ -4,11 +4,11 @@ import by.onliner.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class AbstractPage {
+public abstract class AbstractComponent {
 
     public WebDriver driver;
 
-    public AbstractPage() {
+    public AbstractComponent() {
         driver = DriverManager.getDriver();
         PageFactory.initElements(this.driver, this);
     }
@@ -16,5 +16,5 @@ public abstract class AbstractPage {
     /***
      * Checks the element presence on a page.
      */
-    protected abstract void waitForPageOpened();
+    protected abstract void waitForComponentOpened();
 }
