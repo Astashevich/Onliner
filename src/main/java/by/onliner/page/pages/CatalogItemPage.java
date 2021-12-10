@@ -6,7 +6,7 @@ import by.onliner.util.Waiter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CatalogPageItem extends AbstractPage {
+public class CatalogItemPage extends AbstractPage {
 
     private ShoppingCartPopup shoppingCartPopup = new ShoppingCartPopup();
 
@@ -16,7 +16,7 @@ public class CatalogPageItem extends AbstractPage {
     @FindBy(linkText = "В корзине")
     private WebElement greenShoppingCartButton;
 
-    public CatalogPageItem() {
+    public CatalogItemPage() {
         super();
     }
 
@@ -32,8 +32,8 @@ public class CatalogPageItem extends AbstractPage {
         waitForPageOpened();
         addToShoppingCartButton.click();
         Waiter.waitForVisibility(greenShoppingCartButton);
-        if (shoppingCartPopup.visibilityOfShoppingCartPopup()) {
-            shoppingCartPopup.closeShoppingCartPopup();
-        }
+//        if (shoppingCartPopup.isShoppingCartPopupVisible()) {
+//            shoppingCartPopup.closeShoppingCartPopup();
+//        }
     }
 }

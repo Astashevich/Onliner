@@ -2,10 +2,8 @@ package by.onliner.page.components;
 
 import by.onliner.page.AbstractComponent;
 import by.onliner.util.Waiter;
-import org.awaitility.Awaitility;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ShoppingCartPopup extends AbstractComponent {
 
@@ -21,17 +19,12 @@ public class ShoppingCartPopup extends AbstractComponent {
         Waiter.elementToBeClickable(shoppingCartPopupCloseButton);
     }
 
-    public boolean visibilityOfShoppingCartPopup() {
-        try {
-            Awaitility.await()
-                    .atMost(5, SECONDS)
-                    .atLeast(1, SECONDS)
-                    .pollInterval(1, SECONDS)
-                    .until(() -> shoppingCartPopupCloseButton.isDisplayed());
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    /***
+     * Checks if a Shopping cart popup is visible
+     * @return visibility of popup
+     */
+    public boolean isShoppingCartPopupVisible() {
+        return shoppingCartPopupCloseButton.isDisplayed();
     }
 
     /***

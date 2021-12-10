@@ -16,7 +16,7 @@ public class ShoppingCartPage extends AbstractPage {
     private WebElement removeFromCartButton;
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__offers-unit_primary')]")
-    private WebElement cartUnit;
+    private WebElement cartUnitForm;
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__description_condensed-extra')]")
     private WebElement removedItemInformation;

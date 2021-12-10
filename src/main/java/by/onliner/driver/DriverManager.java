@@ -14,13 +14,17 @@ public class DriverManager {
      * Returns the value in a copy of the current thread by this thread-local variable
      * @return webdriver of the current thread
      */
-    public static WebDriver getDriver() {return threadDriver.get();}
+    public static WebDriver getDriver() {
+        return threadDriver.get();
+    }
 
     /***
      * Sets the value in a copy of the current thread by this thread-local variable
      * @param driver of the local thread
      */
-    public static void setDriver(WebDriver driver) {threadDriver.set(driver);}
+    public static void setDriver(WebDriver driver) {
+        threadDriver.set(driver);
+    }
 
     /***
      *  Remove the value in a copy of the current thread by this thread-local variable

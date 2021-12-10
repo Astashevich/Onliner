@@ -6,20 +6,16 @@ import by.onliner.page.components.Menu;
 import by.onliner.util.Waiter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
-import org.openqa.selenium.support.PageFactory;
 import java.util.List;
+import java.util.Random;
 import static by.onliner.constants.OnlinerConstants.HOST;
-import static by.onliner.util.ListUtil.getRandomWebElementFromList;
 
 public class MainPage extends AbstractPage {
 
-    private final int maxListSizeOnPage = 7;
+    private static final int MAX_LIST_SIZE_ON_PAGE = 7;
 
-    @FindBys({
-            @FindBy(className = "catalog-offers__image")
-    })
-    private List<WebElement> catalogListItems;
+    @FindBy(className = "catalog-offers__image")
+    private List<WebElement> catalogItems;
 
     public MainPage() {
         super();
@@ -27,12 +23,13 @@ public class MainPage extends AbstractPage {
 
     public MainPage openPage() {
         DriverManager.getDriver().navigate().to(HOST);
+        waitForPageOpened();
         return this;
     }
 
     @Override
     public void waitForPageOpened() {
-        Waiter.waitForVisibility(getRandomWebElementFromList(catalogListItems, maxListSizeOnPage));
+        Waiter.waitForVisibility(catalogItems.get(new Random().nextInt(MAX_LIST_SIZE_ON_PAGE)));
     }
 
     /***
@@ -40,15 +37,13 @@ public class MainPage extends AbstractPage {
      * @return menu component
      */
     public Menu getMenu() {
-        driver = DriverManager.getDriver();
-        PageFactory.initElements(this.driver, this);
         return new Menu();
     }
 
     /***
      * Click on the first catalog item
      */
-    public void openCatalogFirstItem() {
-        getRandomWebElementFromList(catalogListItems, maxListSizeOnPage).click();
+    public void openCatalogRandomItem() {
+        catalogItems.get( new Random().nextInt(MAX_LIST_SIZE_ON_PAGE)).click();
     }
 }
