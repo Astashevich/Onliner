@@ -1,6 +1,7 @@
 package by.onliner.page.pages;
 
 import by.onliner.page.AbstractPage;
+import by.onliner.page.components.Menu;
 import by.onliner.page.components.ShoppingCartPopup;
 import by.onliner.util.Waiter;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,14 @@ public class CatalogItemPage extends AbstractPage {
     @Override
     public void waitForPageOpened() {
         Waiter.waitForVisibility(addToShoppingCartButton);
+    }
+
+    /***
+     * Take menu for usage in tests
+     * @return menu component
+     */
+    public Menu getMenu() {
+        return new Menu();
     }
 
     /***

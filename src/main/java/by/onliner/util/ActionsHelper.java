@@ -9,8 +9,9 @@ import org.openqa.selenium.interactions.Actions;
  */
 public class ActionsHelper {
 
+    private static final Actions actions = new Actions(DriverManager.getDriver());
+
     public static void moveToElementAndClick(WebElement webElement) {
-        Actions actions = new Actions(DriverManager.getDriver());
         actions.moveToElement(webElement).click(webElement).build().perform();
     }
 }

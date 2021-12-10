@@ -7,8 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class Menu extends AbstractComponent {
 
-    ShoppingCartPopup shoppingCartPopup;
-
     @FindBy(className = "auth-bar__item--cart")
     private WebElement shoppingCartButton;
 
