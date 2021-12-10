@@ -9,7 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class CatalogItemPage extends AbstractPage {
 
-    private ShoppingCartPopup shoppingCartPopup = new ShoppingCartPopup();
+    private Menu menu;
+    private ShoppingCartPopup shoppingCartPopup;
 
     @FindBy(linkText = "В корзину")
     private WebElement addToShoppingCartButton;
@@ -19,6 +20,8 @@ public class CatalogItemPage extends AbstractPage {
 
     public CatalogItemPage() {
         super();
+        menu = new Menu();
+        shoppingCartPopup = new ShoppingCartPopup();
     }
 
     @Override
@@ -31,7 +34,7 @@ public class CatalogItemPage extends AbstractPage {
      * @return menu component
      */
     public Menu getMenu() {
-        return new Menu();
+        return menu;
     }
 
     /***

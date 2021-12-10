@@ -13,12 +13,14 @@ import static by.onliner.constants.OnlinerConstants.HOST;
 public class MainPage extends AbstractPage {
 
     private static final int MAX_LIST_SIZE_ON_PAGE = 7;
+    private Menu menu;
 
     @FindBy(className = "catalog-offers__image")
     private List<WebElement> catalogItems;
 
     public MainPage() {
         super();
+        menu = new Menu();
     }
 
     public MainPage openPage() {
@@ -37,7 +39,7 @@ public class MainPage extends AbstractPage {
      * @return menu component
      */
     public Menu getMenu() {
-        return new Menu();
+        return menu;
     }
 
     /***
