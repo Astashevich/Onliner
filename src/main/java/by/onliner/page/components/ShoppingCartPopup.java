@@ -1,9 +1,11 @@
 package by.onliner.page.components;
 
 import by.onliner.elements.widget.Button;
-import org.openqa.selenium.support.FindBy;
 import by.onliner.page.AbstractComponent;
 import by.onliner.utils.Waiter;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.support.FindBy;
 
 public class ShoppingCartPopup extends AbstractComponent {
 
@@ -24,7 +26,12 @@ public class ShoppingCartPopup extends AbstractComponent {
      * @return visibility of popup
      */
     public boolean isShoppingCartPopupVisible() {
-        return shoppingCartPopupCloseButton.isDisplayed();
+       try {
+           Waiter.waitForVisibility(shoppingCartPopupCloseButton, 1);
+           return shoppingCartPopupCloseButton.isDisplayed();
+       } catch (NoSuchElementException | TimeoutException e) {
+           return false;
+       }
     }
 
     /***

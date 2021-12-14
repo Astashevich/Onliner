@@ -44,8 +44,8 @@ public class CatalogItemPage extends AbstractPage {
         waitForPageOpened();
         addToShoppingCartButton.click();
         Waiter.waitForVisibility(greenShoppingCartButton);
-        /*if (shoppingCartPopup.getShoppingCartPopupCloseButton().isDisplayed()) {
+        if (shoppingCartPopup.isShoppingCartPopupVisible()) {
             shoppingCartPopup.closeShoppingCartPopup();
-        }*/
+        }
     }
 }
