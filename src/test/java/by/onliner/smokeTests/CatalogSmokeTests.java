@@ -1,11 +1,11 @@
 package by.onliner.smokeTests;
 
-import by.onliner.BaseTest;
+import by.onliner.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static utils.EqualsUtil.equalContains;
+import static by.onliner.utils.EqualsUtil.equalContains;
 
-public class CatalogSmokeTests extends BaseTest {
+public class CatalogSmokeTests extends AbstractTest {
 
     @Test(groups = "positiveTests", description = "[Test-Case ID:ONL_002] Test for removing item from the shopping cart " +
             "and checking the cart for emptiness")
