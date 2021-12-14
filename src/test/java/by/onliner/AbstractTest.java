@@ -16,7 +16,7 @@ public abstract class AbstractTest {
     protected ShoppingCartPage shoppingCartPage;
 
     /***
-     * Set and open the local thread browser type with by.onliner.page initialisation.
+     * Set and open the local thread browser type with by.onliner.driver initialisation.
      */
     @BeforeMethod
     public void setUp() {

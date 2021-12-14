@@ -14,7 +14,7 @@ public abstract class AbstractComponent {
     }
 
     /***
-     * Checks the element presence on a by.onliner.page.
+     * Checks the element presence on a by.onliner.driver.
      */
     protected abstract void waitForComponentOpened();
 }
