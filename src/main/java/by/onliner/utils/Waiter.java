@@ -13,19 +13,24 @@ import java.time.Duration;
  */
 public class Waiter {
 
-    private static final Duration TIMEOUT = Duration.ofSeconds(10);
-    private static final Duration POLLING = Duration.ofMillis(500);
+    private static final Duration TIMEOUT = Duration.ofSeconds(3);
+    private static final Duration POLLING = Duration.ofMillis(200);
 
     private static final FluentWait<WebDriver> fluentWait = new FluentWait<>(DriverManager.getDriver());
+
+    /***
+     * Setup fluent wait driver
+     * @return fluent wait object with certain timeout, polling and ignoring
+     */
+    private static FluentWait<WebDriver> fluentWaitSetup() {
+        return fluentWait.withTimeout(TIMEOUT).pollingEvery(POLLING).ignoring(NoSuchElementException.class);
+    }
 
     /***
      * Waits until the element to be clickable
      */
     public static void elementToBeClickable(WebElement element) {
-        fluentWait
-                .withTimeout(TIMEOUT)
-                .pollingEvery(POLLING)
-                .ignoring(NoSuchElementException.class)
+        fluentWaitSetup()
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -33,10 +38,7 @@ public class Waiter {
      * Waits until the element is visible
      */
     public static void waitForVisibility(WebElement element) {
-        fluentWait
-                .withTimeout(TIMEOUT)
-                .pollingEvery(POLLING)
-                .ignoring(NoSuchElementException.class)
+        fluentWaitSetup()
                 .until(ExpectedConditions.visibilityOf(element));
     }
 
