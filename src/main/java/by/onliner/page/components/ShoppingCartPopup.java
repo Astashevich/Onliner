@@ -28,7 +28,7 @@ public class ShoppingCartPopup extends AbstractComponent {
     public boolean isShoppingCartPopupVisible() {
        try {
            Waiter.waitForVisibility(shoppingCartPopupCloseButton, 2, 500);
-           return true;
+           return shoppingCartPopupCloseButton.isDisplayed();
        } catch (NoSuchElementException | TimeoutException e) {
            return false;
        }
