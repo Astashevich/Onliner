@@ -1,4 +1,4 @@
-package by.onliner.util;
+package by.onliner.utils;
 
 /***
  * The class is used to give us more equals to assertions

@@ -1,20 +1,21 @@
 package by.onliner.page.components;
 
-import by.onliner.page.AbstractComponent;
-import by.onliner.util.Waiter;
-import org.openqa.selenium.WebElement;
+import by.onliner.elements.widget.Button;
+import by.onliner.elements.widget.TextInput;
 import org.openqa.selenium.support.FindBy;
+import by.onliner.page.AbstractComponent;
+import by.onliner.utils.Waiter;
 
 public class Menu extends AbstractComponent {
 
     @FindBy(className = "auth-bar__item--cart")
-    private WebElement shoppingCartButton;
+    private Button shoppingCartButton;
 
     @FindBy(className = "auth-bar__item--text")
-    private WebElement entranceButton;
+    private Button entranceButton;
 
     @FindBy(className = "fast-search__input")
-    private WebElement mainSearchField;
+    private TextInput mainSearchField;
 
     public Menu() {
         super();
@@ -30,11 +31,6 @@ public class Menu extends AbstractComponent {
      */
     public void openShoppingCartPage() {
         waitForComponentOpened();
-//        if (!shoppingCartButton.isEnabled()) {
-//            shoppingCartPopup.closeShoppingCartPopup();
-//        } else {
-//            shoppingCartButton.click();
-//        }
         shoppingCartButton.click();
     }
 }

@@ -1,8 +1,9 @@
-package by.onliner.util;
+package by.onliner.utils;
 
 import by.onliner.driver.DriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 
 /***
  * Wrapper class for actions moves by mouse to the defined element

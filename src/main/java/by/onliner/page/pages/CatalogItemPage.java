@@ -1,11 +1,11 @@
 package by.onliner.page.pages;
 
+import by.onliner.elements.widget.Button;
+import org.openqa.selenium.support.FindBy;
 import by.onliner.page.AbstractPage;
 import by.onliner.page.components.Menu;
 import by.onliner.page.components.ShoppingCartPopup;
-import by.onliner.util.Waiter;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import by.onliner.utils.Waiter;
 
 public class CatalogItemPage extends AbstractPage {
 
@@ -13,10 +13,10 @@ public class CatalogItemPage extends AbstractPage {
     private ShoppingCartPopup shoppingCartPopup;
 
     @FindBy(linkText = "В корзину")
-    private WebElement addToShoppingCartButton;
+    private Button addToShoppingCartButton;
 
     @FindBy(linkText = "В корзине")
-    private WebElement greenShoppingCartButton;
+    private Button greenShoppingCartButton;
 
     public CatalogItemPage() {
         super();
@@ -44,8 +44,8 @@ public class CatalogItemPage extends AbstractPage {
         waitForPageOpened();
         addToShoppingCartButton.click();
         Waiter.waitForVisibility(greenShoppingCartButton);
-//        if (shoppingCartPopup.isShoppingCartPopupVisible()) {
-//            shoppingCartPopup.closeShoppingCartPopup();
-//        }
+        /*if (shoppingCartPopup.getShoppingCartPopupCloseButton().isDisplayed()) {
+            shoppingCartPopup.closeShoppingCartPopup();
+        }*/
     }
 }

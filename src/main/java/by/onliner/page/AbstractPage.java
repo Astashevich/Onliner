@@ -1,8 +1,9 @@
 package by.onliner.page;
 
+
 import by.onliner.driver.DriverManager;
+import by.onliner.elements.factory.ElementFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbstractPage {
 
@@ -10,11 +11,11 @@ public abstract class AbstractPage {
 
     public AbstractPage() {
         driver = DriverManager.getDriver();
-        PageFactory.initElements(this.driver, this);
+        ElementFactory.initElements(this.driver, this);
     }
 
     /***
-     * Checks the element presence on a page.
+     * Checks the element presence on a by.onliner.driver.
      */
     protected abstract void waitForPageOpened();
 }

@@ -1,13 +1,14 @@
 package by.onliner.page.pages;
 
 import by.onliner.driver.DriverManager;
+import by.onliner.elements.widget.Link;
+import org.openqa.selenium.support.FindBy;
 import by.onliner.page.AbstractPage;
 import by.onliner.page.components.Menu;
-import by.onliner.util.Waiter;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import by.onliner.utils.Waiter;
 import java.util.List;
 import java.util.Random;
+
 import static by.onliner.constants.OnlinerConstants.HOST;
 
 public class MainPage extends AbstractPage {
@@ -16,7 +17,7 @@ public class MainPage extends AbstractPage {
     private Menu menu;
 
     @FindBy(className = "catalog-offers__image")
-    private List<WebElement> catalogItems;
+    private List<Link> catalogItems;
 
     public MainPage() {
         super();

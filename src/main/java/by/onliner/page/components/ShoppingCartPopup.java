@@ -1,14 +1,14 @@
 package by.onliner.page.components;
 
-import by.onliner.page.AbstractComponent;
-import by.onliner.util.Waiter;
-import org.openqa.selenium.WebElement;
+import by.onliner.elements.widget.Button;
 import org.openqa.selenium.support.FindBy;
+import by.onliner.page.AbstractComponent;
+import by.onliner.utils.Waiter;
 
 public class ShoppingCartPopup extends AbstractComponent {
 
     @FindBy(className = "product-recommended__sidebar-close")
-    private WebElement shoppingCartPopupCloseButton;
+    private Button shoppingCartPopupCloseButton;
 
     public ShoppingCartPopup() {
         super();

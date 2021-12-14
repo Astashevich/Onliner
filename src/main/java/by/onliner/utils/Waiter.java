@@ -1,4 +1,4 @@
-package by.onliner.util;
+package by.onliner.utils;
 
 import by.onliner.driver.DriverManager;
 import org.openqa.selenium.WebElement;

@@ -1,9 +1,9 @@
-package by.onliner.tests.smokeTests;
+package by.onliner.smokeTests;
 
-import by.onliner.tests.AbstractTest;
+import by.onliner.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static by.onliner.util.EqualsUtil.equalContains;
+import static by.onliner.utils.EqualsUtil.equalContains;
 
 public class CatalogSmokeTests extends AbstractTest {
 
