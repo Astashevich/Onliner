@@ -14,7 +14,7 @@ import java.time.Duration;
 public class Waiter {
 
     private static final Duration TIMEOUT = Duration.ofSeconds(3);
-    private static final Duration POLLING = Duration.ofMillis(200);
+    private static final Duration POLLING = Duration.ofMillis(100);
 
     private static final FluentWait<WebDriver> fluentWait = new FluentWait<>(DriverManager.getDriver());
 
@@ -45,10 +45,10 @@ public class Waiter {
     /***
      * Waits until the element is visible using custom timing
      */
-    public static void waitForVisibility(WebElement element, int timeoutSec, int pollingMils) {
+    public static void waitForVisibility(WebElement element, int timeoutSec) {
         fluentWait
                 .withTimeout(Duration.ofSeconds(timeoutSec))
-                .pollingEvery(Duration.ofMillis(pollingMils))
+                .pollingEvery(POLLING)
                 .until(ExpectedConditions.visibilityOf(element));
     }
 }
