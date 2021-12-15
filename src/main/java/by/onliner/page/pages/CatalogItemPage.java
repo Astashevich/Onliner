@@ -44,6 +44,7 @@ public class CatalogItemPage extends AbstractPage {
         waitForPageOpened();
         addToShoppingCartButton.click();
         Waiter.waitForVisibility(greenShoppingCartButton);
+        logger.info("Click 'В корзину' button");
         if (shoppingCartPopup.isShoppingCartPopupVisible()) {
             shoppingCartPopup.closeShoppingCartPopup();
         }

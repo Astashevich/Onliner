@@ -28,6 +28,7 @@ public class ShoppingCartPopup extends AbstractComponent {
     public boolean isShoppingCartPopupVisible() {
        try {
            Waiter.waitForVisibility(shoppingCartPopupCloseButton, 1);
+           logger.info("Opened 'Shopping cart' popup");
            return shoppingCartPopupCloseButton.isDisplayed();
        } catch (NoSuchElementException | TimeoutException e) {
            return false;
@@ -39,5 +40,6 @@ public class ShoppingCartPopup extends AbstractComponent {
      */
     public void closeShoppingCartPopup() {
         shoppingCartPopupCloseButton.click();
+        logger.info("Close popup");
     }
 }

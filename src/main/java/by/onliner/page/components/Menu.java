@@ -32,5 +32,6 @@ public class Menu extends AbstractComponent {
     public void openShoppingCartPage() {
         waitForComponentOpened();
         shoppingCartButton.click();
+        logger.info("Click 'Shopping cart' button");
     }
 }
