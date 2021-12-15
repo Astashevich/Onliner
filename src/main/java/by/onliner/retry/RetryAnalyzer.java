@@ -9,7 +9,7 @@ import org.testng.ITestResult;
  */
 public class RetryAnalyzer implements IRetryAnalyzer {
 
-    private int actualRetry;
+    private int actualRetry = 0;
     private static final int MAX_RETRY = 2;
 
     @Override

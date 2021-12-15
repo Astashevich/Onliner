@@ -10,5 +10,8 @@
                 <include name="Catalog items tests"/>
             </run>
         </groups>
+        <classes>
+            <class name="by.onliner.catalogTests.CatalogItemsTests"/>
+        </classes>
     </test>
 </suite>
