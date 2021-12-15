@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-5"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Onliner.by test suite">
+    <test name="Positive tests">
+        <groups>
+            <run>
+                <include name="positiveTests"/>
+            </run>
+        </groups>
+    </test>
+</suite>
