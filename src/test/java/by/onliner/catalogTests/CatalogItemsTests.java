@@ -3,6 +3,7 @@ package by.onliner.catalogTests;
 import by.onliner.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import static by.onliner.utils.EqualsUtil.equalContains;
 
 public class CatalogItemsTests extends AbstractTest {
