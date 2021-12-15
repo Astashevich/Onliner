@@ -49,6 +49,6 @@ public class MainPage extends AbstractPage {
      */
     public void openCatalogRandomItem() {
         catalogItems.get( new Random().nextInt(MAX_LIST_SIZE_ON_PAGE)).click();
-        logger.info("Opened 'Random catalog item' from main page");
+        logger.info("Open 'Random catalog item' from main page");
     }
 }
