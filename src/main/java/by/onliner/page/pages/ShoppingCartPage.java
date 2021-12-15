@@ -37,6 +37,7 @@ public class ShoppingCartPage extends AbstractPage {
     public void removeItemFromCart() {
         Waiter.waitForVisibility(removeFromCartButton);
         ActionsHelper.moveToElementAndClick(removeFromCartButton);
+        logger.info("Click 'remove from cart' button");
     }
 
     /***
@@ -44,6 +45,7 @@ public class ShoppingCartPage extends AbstractPage {
      */
     public String getRemovedItemInformation() {
         Waiter.elementToBeClickable(removedItemInformation);
+        logger.info(String.format("Displayed ...%s... message", removedItemInformation.getText()));
         return removedItemInformation.getText();
     }
 
@@ -53,6 +55,7 @@ public class ShoppingCartPage extends AbstractPage {
     public String getEmptyCartMassage() {
         DriverManager.getDriver().navigate().refresh();
         Waiter.waitForVisibility(emptyCartMessage);
+        logger.info(String.format("Displayed ...%s... message", emptyCartMessage.getText()));
         return emptyCartMessage.getText();
     }
 }
