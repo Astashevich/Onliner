@@ -18,7 +18,7 @@ public abstract class AbstractTest {
     /***
      * Set and open the local thread browser type with by.onliner.driver initialisation.
      */
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         DriverManager.setDriver(DriverFactory.getDriver(DriverFactory.BrowserType.CHROME));
         mainPage = new MainPage();
@@ -29,7 +29,7 @@ public abstract class AbstractTest {
     /***
      * Closes the local thread by.onliner.driver.
      */
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void shutDown() {
         DriverManager.quitDriver(getDriver());
     }
