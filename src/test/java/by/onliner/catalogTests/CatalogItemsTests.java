@@ -1,14 +1,14 @@
-package by.onliner.smokeTests;
+package by.onliner.catalogTests;
 
 import by.onliner.AbstractTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static by.onliner.utils.EqualsUtil.equalContains;
 
-public class CatalogSmokeTests extends AbstractTest {
+public class CatalogItemsTests extends AbstractTest {
 
-    @Test(groups = "positiveTests", description = "[Test-Case ID:ONL_002] Test for removing item from the shopping cart " +
-            "and checking the cart for emptiness")
+    @Test(groups = "Catalog items tests", description = "[Test-Case ID:ONL_002] Test for removing item from the " +
+            "shopping cart and checking the cart for emptiness")
     public void removeItemFromShoppingCartTest() {
         mainPage.openPage();
         mainPage.openCatalogRandomItem();
