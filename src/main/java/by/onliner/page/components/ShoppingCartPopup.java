@@ -3,6 +3,7 @@ package by.onliner.page.components;
 import by.onliner.elements.widget.Button;
 import by.onliner.page.AbstractComponent;
 import by.onliner.utils.Waiter;
+import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.support.FindBy;
@@ -38,6 +39,7 @@ public class ShoppingCartPopup extends AbstractComponent {
     /***
      * Click on the popup close button.
      */
+    @Step("Close shopping cart popup")
     public void closeShoppingCartPopup() {
         shoppingCartPopupCloseButton.click();
         logger.info("Close popup");

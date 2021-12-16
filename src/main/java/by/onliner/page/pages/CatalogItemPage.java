@@ -1,6 +1,7 @@
 package by.onliner.page.pages;
 
 import by.onliner.elements.widget.Button;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import by.onliner.page.AbstractPage;
 import by.onliner.page.components.Menu;
@@ -40,6 +41,7 @@ public class CatalogItemPage extends AbstractPage {
     /***
      * Click on the addToShoppingCart button.
      */
+    @Step("Add item to the shopping cart")
     public void addToCart() {
         waitForPageOpened();
         addToShoppingCartButton.click();
