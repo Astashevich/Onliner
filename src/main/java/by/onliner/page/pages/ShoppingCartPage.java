@@ -3,6 +3,7 @@ package by.onliner.page.pages;
 import by.onliner.driver.DriverManager;
 import by.onliner.elements.widget.Button;
 import by.onliner.elements.widget.Text;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import by.onliner.page.AbstractPage;
 import by.onliner.utils.ActionsHelper;
@@ -34,6 +35,7 @@ public class ShoppingCartPage extends AbstractPage {
     /***
      * Click on the bucket icon.
      */
+    @Step("Remove item from the shopping cart")
     public void removeItemFromCart() {
         Waiter.waitForVisibility(removeFromCartButton);
         ActionsHelper.moveToElementAndClick(removeFromCartButton);
@@ -43,6 +45,7 @@ public class ShoppingCartPage extends AbstractPage {
     /***
      * Get a message from removed item.
      */
+    @Step("Read removed item information")
     public String getRemovedItemInformation() {
         Waiter.elementToBeClickable(removedItemInformation);
         logger.info(String.format("Displayed [%s] message", removedItemInformation.getText()));
@@ -52,6 +55,7 @@ public class ShoppingCartPage extends AbstractPage {
     /***
      * Get a message from empty cart.
      */
+    @Step("Read the empty cart message")
     public String getEmptyCartMassage() {
         DriverManager.getDriver().navigate().refresh();
         Waiter.waitForVisibility(emptyCartMessage);

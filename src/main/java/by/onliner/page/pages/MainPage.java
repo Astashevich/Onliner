@@ -2,6 +2,7 @@ package by.onliner.page.pages;
 
 import by.onliner.driver.DriverManager;
 import by.onliner.elements.widget.Link;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import by.onliner.page.AbstractPage;
 import by.onliner.page.components.Menu;
@@ -24,6 +25,7 @@ public class MainPage extends AbstractPage {
         menu = new Menu();
     }
 
+    @Step("Open page: Onliner.by")
     public MainPage openPage() {
         DriverManager.getDriver().navigate().to(HOST);
         waitForPageOpened();
@@ -47,6 +49,7 @@ public class MainPage extends AbstractPage {
     /***
      * Click on the first catalog item
      */
+    @Step("Open catalog random item")
     public void openCatalogRandomItem() {
         catalogItems.get( new Random().nextInt(MAX_LIST_SIZE_ON_PAGE)).click();
         logger.info("Open 'Random catalog item' from main page");

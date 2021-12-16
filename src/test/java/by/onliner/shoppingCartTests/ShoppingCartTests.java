@@ -1,12 +1,15 @@
-package by.onliner.catalogTests;
+package by.onliner.shoppingCartTests;
 
 import by.onliner.AbstractTest;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static by.onliner.utils.EqualsUtil.equalContains;
 
-public class CatalogItemsTests extends AbstractTest {
+
+@Feature("Shopping cart")
+public class ShoppingCartTests extends AbstractTest {
 
     @Test(groups = "Catalog items tests", description = "[Test-Case ID:ONL_002] Test for removing item from the " +
             "shopping cart and checking the cart for emptiness")
