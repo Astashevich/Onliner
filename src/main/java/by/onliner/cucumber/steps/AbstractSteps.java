@@ -1,8 +1,8 @@
 package by.onliner.cucumber.steps;
 
-import by.onliner.page.pages.CatalogItemPage;
-import by.onliner.page.pages.MainPage;
-import by.onliner.page.pages.ShoppingCartPage;
+import by.onliner.page.site.CatalogItemPage;
+import by.onliner.page.site.MainPage;
+import by.onliner.page.site.ShoppingCartPage;
 
 public class AbstractSteps {
 

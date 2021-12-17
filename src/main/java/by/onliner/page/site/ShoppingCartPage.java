@@ -1,4 +1,4 @@
-package by.onliner.page.pages;
+package by.onliner.page.site;
 
 import by.onliner.driver.DriverManager;
 import by.onliner.elements.widget.Button;
