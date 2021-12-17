@@ -1,10 +1,9 @@
-package by.onliner.page.site;
+package by.onliner.page;
 
 import by.onliner.driver.DriverManager;
 import by.onliner.elements.widget.Link;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
-import by.onliner.page.AbstractPage;
 import by.onliner.page.components.Menu;
 import by.onliner.utils.Waiter;
 import java.util.List;
