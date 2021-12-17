@@ -4,9 +4,7 @@ import by.onliner.tests.AbstractTest;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import static by.onliner.utils.EqualsUtil.equalContains;
-
 
 @Feature("Shopping cart")
 public class ShoppingCartTests extends AbstractTest {

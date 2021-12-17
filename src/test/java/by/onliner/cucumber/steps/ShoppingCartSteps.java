@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-
 import static by.onliner.utils.EqualsUtil.equalContains;
 
 public class ShoppingCartSteps extends AbstractSteps {
