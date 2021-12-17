@@ -1,6 +1,6 @@
-package by.onliner.shoppingCartTests;
+package by.onliner.tests.shoppingCartTests;
 
-import by.onliner.AbstractTest;
+import by.onliner.tests.AbstractTest;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,6 +26,6 @@ public class ShoppingCartTests extends AbstractTest {
         Assert.assertTrue(equalContains(removedItemMessage, "Вы удалили"), String.format("The message [%s]" +
                 " wasn't contains at expected removed message [%s...]", removedItemMessage, "Вы удалили"));
         Assert.assertTrue(equalContains(emptyCartMassage, "Ваша корзина пуста"), String.format("The message " +
-                "\"%s\" wasn't contains at expected empty cart message [%s]", emptyCartMassage, "Ваша корзина пуста"));
+                "[%s] wasn't contains at expected empty cart message [%s]", emptyCartMassage, "Ваша корзина пуста"));
     }
 }

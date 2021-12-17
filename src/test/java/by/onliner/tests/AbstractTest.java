@@ -1,4 +1,4 @@
-package by.onliner;
+package by.onliner.tests;
 
 import by.onliner.driver.DriverFactory;
 import by.onliner.driver.DriverManager;

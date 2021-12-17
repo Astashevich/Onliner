@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-5"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Catalog test suite">
+<suite name="Shopping cart suite">
     <listeners>
         <listener class-name="by.onliner.retry.AnnotationTransformer"/>
     </listeners>
-    <test name="Catalog items tests">
+    <test name="Shopping cart tests">
         <groups>
             <run>
                 <include name="Catalog items tests"/>
             </run>
         </groups>
         <classes>
-            <class name="by.onliner.shoppingCartTests.ShoppingCartTests"/>
+            <class name="by.onliner.tests.shoppingCartTests.ShoppingCartTests"/>
         </classes>
     </test>
 </suite>
