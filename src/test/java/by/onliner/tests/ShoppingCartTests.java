@@ -1,4 +1,4 @@
-package by.onliner.shoppingCartTests;
+package by.onliner.tests;
 
 import by.onliner.AbstractTest;
 import io.qameta.allure.Feature;
