@@ -10,7 +10,6 @@ import static by.onliner.utils.EqualsUtil.equalContains;
 
 public class ShoppingCartSteps extends AbstractSteps {
 
-
     @Given("Open main page: Onliner.by")
     public void openMainPage() {
         mainPage.openPage();
@@ -36,19 +35,19 @@ public class ShoppingCartSteps extends AbstractSteps {
         shoppingCartPage.removeItemFromCart();
     }
 
-    @Then("Appeared information should contain [Вы удалили]")
-    public void checkedRemovedItemInfo() {
+    @Then("Appeared information should contain {string}")
+    public void checkedRemovedItemInfo(String expectedMessage) {
         String removedItemMessage = shoppingCartPage.getRemovedItemInformation();
-        Assert.assertTrue(equalContains(removedItemMessage, "Вы удалили"),
+        Assert.assertTrue(equalContains(removedItemMessage, expectedMessage),
                 String.format("The message [%s] wasn't contains at expected removed message [%s...]",
-                        removedItemMessage, "Вы удалили"));
+                        removedItemMessage, expectedMessage));
     }
 
-    @And("Expected empty cart message should contain [Ваша корзина пуста]")
-    public void checkedEmptyCartMessage() {
+    @And("Expected empty cart message should contain {string}")
+    public void checkedEmptyCartMessage(String expectedMessage) {
         String emptyCartMassage = shoppingCartPage.getEmptyCartMassage();
-        Assert.assertTrue(equalContains(emptyCartMassage, "Ваша корзина пуста"),
+        Assert.assertTrue(equalContains(emptyCartMassage, expectedMessage),
                 String.format("The message [%s] wasn't contains at expected empty cart message [%s]",
-                        emptyCartMassage, "Ваша корзина пуста"));
+                        emptyCartMassage, expectedMessage));
     }
 }

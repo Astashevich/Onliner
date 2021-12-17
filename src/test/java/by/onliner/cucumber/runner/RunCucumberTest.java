@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "by/onliner/cucumber")
-        //tags = "@foo, @bar")
+        glue = "by/onliner/cucumber",
+        tags = "@SmokeTest")
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
 }

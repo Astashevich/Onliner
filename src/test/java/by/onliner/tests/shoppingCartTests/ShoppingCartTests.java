@@ -24,7 +24,7 @@ public class ShoppingCartTests extends AbstractTest {
         String emptyCartMassage = shoppingCartPage.getEmptyCartMassage();
 
         Assert.assertTrue(equalContains(removedItemMessage, "Вы удалили"), String.format("The message [%s]" +
-                " wasn't contains at expected removed message [%s...]", removedItemMessage, "Вы удалили"));
+                " wasn't contains at expected removed message [%s]", removedItemMessage, "Вы удалили"));
         Assert.assertTrue(equalContains(emptyCartMassage, "Ваша корзина пуста"), String.format("The message " +
                 "[%s] wasn't contains at expected empty cart message [%s]", emptyCartMassage, "Ваша корзина пуста"));
     }
