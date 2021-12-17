@@ -1,4 +1,4 @@
-package by.onliner;
+package by.onliner.tests;
 
 import by.onliner.driver.DriverFactory;
 import by.onliner.driver.DriverManager;
@@ -8,7 +8,6 @@ import by.onliner.page.pages.ShoppingCartPage;
 import com.google.common.collect.ImmutableMap;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
 import static by.onliner.driver.DriverManager.getDriver;
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
