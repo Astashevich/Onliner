@@ -1,10 +1,12 @@
 Feature: Tests for shopping cart
 
-  Scenario: [Test-Case ID:ONL_002] Removing item from the shopping cart and checking the cart for emptiness
+  Background:
     Given Open main page: Onliner.by
-    And Open catalog random item
-    And Add item to the shopping cart
-    And Open shopping cart page
+    * Open catalog random item
+    * Add item to the shopping cart
+    * Open shopping cart page
+
+  Scenario: [Test-Case ID:ONL_002] Removing item from the shopping cart and checking the cart for emptiness
     When Remove item from the shopping cart
     Then Appeared information should contain [Вы удалили]
     And Expected empty cart message should contain [Ваша корзина пуста]
