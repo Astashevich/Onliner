@@ -1,6 +1,6 @@
-package by.onliner.tests.shoppingCartTests;
+package by.onliner.tests;
 
-import by.onliner.tests.AbstractTest;
+import by.onliner.AbstractTest;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;

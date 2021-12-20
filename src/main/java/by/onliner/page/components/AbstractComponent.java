@@ -1,4 +1,4 @@
-package by.onliner.page;
+package by.onliner.page.components;
 
 import by.onliner.driver.DriverManager;
 import by.onliner.elements.factory.ElementFactory;

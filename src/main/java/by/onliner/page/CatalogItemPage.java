@@ -1,12 +1,11 @@
-package by.onliner.page.pages;
+package by.onliner.page;
 
 import by.onliner.elements.widget.Button;
-import io.qameta.allure.Step;
-import org.openqa.selenium.support.FindBy;
-import by.onliner.page.AbstractPage;
 import by.onliner.page.components.Menu;
 import by.onliner.page.components.ShoppingCartPopup;
 import by.onliner.utils.Waiter;
+import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
 
 public class CatalogItemPage extends AbstractPage {
 

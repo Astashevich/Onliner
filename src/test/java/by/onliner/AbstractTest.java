@@ -1,10 +1,10 @@
-package by.onliner.tests;
+package by.onliner;
 
 import by.onliner.driver.DriverFactory;
 import by.onliner.driver.DriverManager;
-import by.onliner.page.pages.CatalogItemPage;
-import by.onliner.page.pages.MainPage;
-import by.onliner.page.pages.ShoppingCartPage;
+import by.onliner.page.CatalogItemPage;
+import by.onliner.page.MainPage;
+import by.onliner.page.ShoppingCartPage;
 import com.google.common.collect.ImmutableMap;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
