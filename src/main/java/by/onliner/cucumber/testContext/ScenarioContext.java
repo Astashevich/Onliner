@@ -3,6 +3,9 @@ package by.onliner.cucumber.testContext;
 import java.util.HashMap;
 import java.util.Map;
 
+/***
+ *  ScenarioContext helps to store data and pass it from step to step
+ */
 public class ScenarioContext {
 
     private static ScenarioContext scenario;
