@@ -1,4 +1,4 @@
-package by.onliner.retry;
+package by.onliner.test_dev.transformer;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
