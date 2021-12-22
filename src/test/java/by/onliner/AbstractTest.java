@@ -2,7 +2,7 @@ package by.onliner;
 
 import by.onliner.driver.DriverFactory;
 import by.onliner.driver.DriverManager;
-import by.onliner.listener.TestListener;
+import by.onliner.test_dev.listener.TestListener;
 import by.onliner.page.CatalogItemPage;
 import by.onliner.page.MainPage;
 import by.onliner.page.ShoppingCartPage;

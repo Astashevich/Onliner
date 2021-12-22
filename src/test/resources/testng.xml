@@ -1,15 +1,10 @@
-<?xml version="1.0" encoding="ISO-8859-5"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Shopping cart suite">
     <listeners>
-        <listener class-name="by.onliner.retry.AnnotationTransformer"/>
+        <listener class-name="by.onliner.test_dev.transformer.AnnotationTransformer"/>
     </listeners>
     <test name="Shopping cart tests">
-        <groups>
-            <run>
-                <include name="Catalog items tests"/>
-            </run>
-        </groups>
         <classes>
             <class name="by.onliner.tests.ShoppingCartTests"/>
         </classes>
