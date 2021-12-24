@@ -8,6 +8,7 @@
         </Console>
         <File name="File" fileName="target/logs/appTest.log">
             <PatternLayout>
+                <Charset>UTF-8</Charset>
                 <Pattern>%d{dd MMM yyyy HH:mm:ss} %-5p [%t] – %-60m     [%C{-3}.%M (%F:%L)]%n</Pattern>
             </PatternLayout>
         </File>
