@@ -2,6 +2,7 @@ package by.onliner.core.utils;
 
 import by.onliner.core.driver.DriverManager;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,7 +24,9 @@ public class Waiter {
      * @return fluent wait object with certain timeout, polling and ignoring
      */
     private static FluentWait<WebDriver> fluentWaitSetup() {
-        return fluentWait.withTimeout(TIMEOUT).pollingEvery(POLLING).ignoring(NoSuchElementException.class);
+        return fluentWait.withTimeout(TIMEOUT).pollingEvery(POLLING)
+                .ignoring(NoSuchElementException.class)
+                .ignoring(TimeoutException.class);
     }
 
     /***
@@ -50,5 +53,16 @@ public class Waiter {
                 .withTimeout(Duration.ofSeconds(timeoutSec))
                 .pollingEvery(POLLING)
                 .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    /***
+     * Sleep driver using custom timing
+     */
+    public static void sleep(int timeoutSec) {
+        try {
+            Thread.sleep(timeoutSec* 1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

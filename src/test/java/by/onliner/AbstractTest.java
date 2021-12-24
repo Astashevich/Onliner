@@ -6,6 +6,8 @@ import by.onliner.core.listener.TestListener;
 import by.onliner.page.CatalogItemPage;
 import by.onliner.page.MainPage;
 import by.onliner.page.ShoppingCartPage;
+import by.onliner.page.*;
+import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -17,6 +19,9 @@ public abstract class AbstractTest {
     protected MainPage mainPage;
     protected CatalogItemPage catalogPageItem;
     protected ShoppingCartPage shoppingCartPage;
+    protected AboutCompanyPage aboutCompanyPage;
+    protected LogInPage logInPage;
+    protected Faker faker;
 
     /***
      * Set and open the local thread browser type with by.onliner.core.driver initialisation.
@@ -28,6 +33,9 @@ public abstract class AbstractTest {
         mainPage = new MainPage();
         catalogPageItem = new CatalogItemPage();
         shoppingCartPage = new ShoppingCartPage();
+        aboutCompanyPage = new AboutCompanyPage();
+        logInPage = new LogInPage();
+        faker = new Faker();
     }
 
     /***
