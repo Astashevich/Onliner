@@ -1,4 +1,4 @@
-package by.onliner.utils;
+package by.onliner.listener;
 
 import org.monte.media.Format;
 import org.monte.media.Registry;
@@ -13,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static by.onliner.constants.FilePathConstants.SAVE_VIDEO_PATH;
-import static by.onliner.constants.RecorderConstants.*;
 import static org.monte.media.FormatKeys.*;
 import static org.monte.media.VideoFormatKeys.*;
 
@@ -22,8 +21,20 @@ import static org.monte.media.VideoFormatKeys.*;
  */
 public class Recorder extends ScreenRecorder {
 
-    private static ScreenRecorder screenRecorder;
-    private static String name;
+    private ScreenRecorder screenRecorder;
+    private String name;
+
+    private static final String CODEC_LIBX264 = "libx264";
+    private static final int BITRATE = 3200000;
+    private static final int FRAMERATE = 15;
+    private static final String FORMAT_MP4 = "mp4";
+    private static final int DEPTH = 24;
+    private static final int RATIONAL_15 = 15;
+    private static final float QUALITY = 1.0f;
+    private static final int FRAME_INTERVAL = 15 * 60;
+    private static final String ENCODING = "black";
+    private static final int RATIONAL_30 = 30;
+    private static final String STORE_FORMAT_MP4 = ".mp4";
 
     /***
      * Setting video recorder
@@ -41,7 +52,11 @@ public class Recorder extends ScreenRecorder {
             throws IOException, AWTException {
         super(cfg, captureArea, fileFormat, screenFormat, mouseFormat, audioFormat, movieFolder);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
-        Recorder.name = name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat);
+        this.name = name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat);
+    }
+
+    public Recorder(GraphicsConfiguration cfg) throws IOException, AWTException {
+        super(cfg);
     }
 
     /***
@@ -56,14 +71,14 @@ public class Recorder extends ScreenRecorder {
         } else if (!movieFolder.isDirectory()) {
             throw new IOException(String.format("{%s} is not a directory.", movieFolder));
         }
-        return new File(movieFolder, Recorder.name);
+        return new File(movieFolder, name);
     }
 
     /***
      * Initialise recorder and start recording test
      * @param name method name
      */
-    public static void startRecording(String name) throws IOException, AWTException {
+    public void startRecording(String name) throws IOException, AWTException {
         File file = new File(SAVE_VIDEO_PATH);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -79,11 +94,10 @@ public class Recorder extends ScreenRecorder {
         screenRecorder = new Recorder(gc, captureSize,
                 new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
                 new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
-                        CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey,
-                        Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
-                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)),
+                        CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, DEPTH, FrameRateKey,
+                        Rational.valueOf(RATIONAL_15), QualityKey, QUALITY, KeyFrameIntervalKey, FRAME_INTERVAL),
+                new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING, FrameRateKey, Rational.valueOf(RATIONAL_30)),
                 null, file, name);
-        // This magical numbers from indian guy, don't touch!
 
         screenRecorder.start();
     }
@@ -92,7 +106,7 @@ public class Recorder extends ScreenRecorder {
      * Stoped recording test
      * @param name method name
      */
-    public static void stopRecording(String name) throws IOException {
+    public void stopRecording(String name) throws IOException {
         screenRecorder.stop();
         aviToMp4(name);
     }
@@ -101,9 +115,9 @@ public class Recorder extends ScreenRecorder {
      * Converts avi to mp4 video format
      * @param name file name
      */
-    private static void aviToMp4(String name) {
-        File source = new File(SAVE_VIDEO_PATH + Recorder.name);
-        File target = new File(SAVE_VIDEO_PATH + name + ".mp4");
+    private void aviToMp4(String name) {
+        File source = new File(SAVE_VIDEO_PATH + name);
+        File target = new File(SAVE_VIDEO_PATH + name + STORE_FORMAT_MP4);
         VideoAttributes video = new VideoAttributes();
         video.setCodec(CODEC_LIBX264);
         video.setBitRate(BITRATE);

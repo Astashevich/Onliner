@@ -1,7 +1,6 @@
 package by.onliner.listener;
 
 import by.onliner.driver.DriverManager;
-import by.onliner.utils.Recorder;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;
 import io.qameta.allure.Attachment;
@@ -30,6 +29,16 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 public class TestListener implements ITestListener {
 
     protected final Logger logger = LogManager.getLogger(this);
+    private Recorder recorder;
+    {
+        try {
+            recorder = new Recorder(GraphicsEnvironment.getLocalGraphicsEnvironment().
+                    getDefaultScreenDevice()
+                    .getDefaultConfiguration());
+        } catch (IOException | AWTException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onStart(ITestContext context) {
@@ -66,9 +75,9 @@ public class TestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
         logger.info(String.format("Test {%s} STARTED", result.getName()));
         try {
-            Recorder.startRecording(result.getName());
+            recorder.startRecording(result.getName());
         } catch (IOException | AWTException e) {
-            logger.error("Can't start video recording");
+            logger.info("Can't start video recording");
             e.printStackTrace();
         }
     }
@@ -80,7 +89,7 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         logger.info(String.format("Test {%s} PASSED", result.getName()));
         try {
-            Recorder.stopRecording(result.getName());
+            recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -96,7 +105,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         logger.debug(String.format("Test {%s} FAILED", result.getName()));
         try {
-            Recorder.stopRecording(result.getName());
+            recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -112,7 +121,7 @@ public class TestListener implements ITestListener {
     public void onTestSkipped(ITestResult result) {
         logger.info(String.format("Test {%s} SKIPPED", result.getName()));
         try {
-            Recorder.stopRecording(result.getName());
+            recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -125,7 +134,7 @@ public class TestListener implements ITestListener {
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         logger.info(String.format("Test {%s} FAILED but with some percentage of success", result.getName()));
         try {
-            Recorder.stopRecording(result.getName());
+            recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -138,7 +147,7 @@ public class TestListener implements ITestListener {
     public void onTestFailedWithTimeout(ITestResult result) {
         logger.info(String.format("Test {%s} FAILED due to the timeout", result.getName()));
         try {
-            Recorder.stopRecording(result.getName());
+            recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
