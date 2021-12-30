@@ -29,16 +29,6 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 public class TestListener implements ITestListener {
 
     protected final Logger logger = LogManager.getLogger(this);
-    private Recorder recorder;
-    {
-        try {
-            recorder = new Recorder(GraphicsEnvironment.getLocalGraphicsEnvironment().
-                    getDefaultScreenDevice()
-                    .getDefaultConfiguration());
-        } catch (IOException | AWTException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void onStart(ITestContext context) {
@@ -75,7 +65,7 @@ public class TestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
         logger.info(String.format("Test {%s} STARTED", result.getName()));
         try {
-            recorder.startRecording(result.getName());
+            Recorder.startRecording(result.getName());
         } catch (IOException | AWTException e) {
             logger.info("Can't start video recording");
             e.printStackTrace();
@@ -89,7 +79,7 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         logger.info(String.format("Test {%s} PASSED", result.getName()));
         try {
-            recorder.stopRecording(result.getName());
+            Recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -105,7 +95,7 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         logger.debug(String.format("Test {%s} FAILED", result.getName()));
         try {
-            recorder.stopRecording(result.getName());
+            Recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -121,7 +111,7 @@ public class TestListener implements ITestListener {
     public void onTestSkipped(ITestResult result) {
         logger.info(String.format("Test {%s} SKIPPED", result.getName()));
         try {
-            recorder.stopRecording(result.getName());
+            Recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -134,7 +124,7 @@ public class TestListener implements ITestListener {
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         logger.info(String.format("Test {%s} FAILED but with some percentage of success", result.getName()));
         try {
-            recorder.stopRecording(result.getName());
+            Recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
@@ -147,7 +137,7 @@ public class TestListener implements ITestListener {
     public void onTestFailedWithTimeout(ITestResult result) {
         logger.info(String.format("Test {%s} FAILED due to the timeout", result.getName()));
         try {
-            recorder.stopRecording(result.getName());
+            Recorder.stopRecording(result.getName());
             appendLogToAllure();
             takeScreenshot();
             attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());

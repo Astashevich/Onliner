@@ -21,8 +21,8 @@ import static org.monte.media.VideoFormatKeys.*;
  */
 public class Recorder extends ScreenRecorder {
 
-    private ScreenRecorder screenRecorder;
-    private String name;
+    private static ScreenRecorder screenRecorder;
+    private static String name;
 
     private static final String CODEC_LIBX264 = "libx264";
     private static final int BITRATE = 3200000;
@@ -52,11 +52,7 @@ public class Recorder extends ScreenRecorder {
             throws IOException, AWTException {
         super(cfg, captureArea, fileFormat, screenFormat, mouseFormat, audioFormat, movieFolder);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
-        this.name = name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat);
-    }
-
-    public Recorder(GraphicsConfiguration cfg) throws IOException, AWTException {
-        super(cfg);
+        Recorder.name = name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat);
     }
 
     /***
@@ -78,7 +74,7 @@ public class Recorder extends ScreenRecorder {
      * Initialise recorder and start recording test
      * @param name method name
      */
-    public void startRecording(String name) throws IOException, AWTException {
+    public static void startRecording(String name) throws IOException, AWTException {
         File file = new File(SAVE_VIDEO_PATH);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -106,7 +102,7 @@ public class Recorder extends ScreenRecorder {
      * Stoped recording test
      * @param name method name
      */
-    public void stopRecording(String name) throws IOException {
+    public static void stopRecording(String name) throws IOException {
         screenRecorder.stop();
         aviToMp4(name);
     }
@@ -115,8 +111,8 @@ public class Recorder extends ScreenRecorder {
      * Converts avi to mp4 video format
      * @param name file name
      */
-    private void aviToMp4(String name) {
-        File source = new File(SAVE_VIDEO_PATH + name);
+    private static void aviToMp4(String name) {
+        File source = new File(SAVE_VIDEO_PATH + Recorder.name);
         File target = new File(SAVE_VIDEO_PATH + name + STORE_FORMAT_MP4);
         VideoAttributes video = new VideoAttributes();
         video.setCodec(CODEC_LIBX264);
