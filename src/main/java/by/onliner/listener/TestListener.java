@@ -63,8 +63,9 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestStart(ITestResult result) {
-        logger.info(String.format("Test {%s} STARTED", result.getName()));
-        VideoManager.getVideoRecorder().startRecording(result.getName());
+        String testName = result.getName();
+        logger.info(String.format("Test {%s} STARTED", testName));
+        VideoManager.getVideoRecorder().startRecording(testName);
     }
 
     /***
@@ -72,11 +73,12 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestSuccess(ITestResult result) {
-        logger.info(String.format("Test {%s} PASSED", result.getName()));
-        VideoManager.stopDefaultRecording(result.getName());
+        String testName = result.getName();
+        logger.info(String.format("Test {%s} PASSED", testName));
+        VideoManager.stopDefaultRecording(testName);
         appendLogToAllure();
         takeScreenshot();
-        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
+        attachVideoToAllure(SAVE_VIDEO_PATH + testName);
     }
 
     /***
@@ -84,11 +86,12 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestFailure(ITestResult result) {
-        logger.info(String.format("Test {%s} FAILED", result.getName()));
-        VideoManager.stopDefaultRecording(result.getName());
+        String testName = result.getName();
+        logger.info(String.format("Test {%s} FAILED", testName));
+        VideoManager.stopDefaultRecording(testName);
         appendLogToAllure();
         takeScreenshot();
-        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
+        attachVideoToAllure(SAVE_VIDEO_PATH + testName);
     }
 
     /***
@@ -96,29 +99,32 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestSkipped(ITestResult result) {
-        logger.info(String.format("Test {%s} SKIPPED", result.getName()));
-        VideoManager.stopDefaultRecording(result.getName());
+        String testName = result.getName();
+        logger.info(String.format("Test {%s} SKIPPED", testName));
+        VideoManager.stopDefaultRecording(testName);
         appendLogToAllure();
         takeScreenshot();
-        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
+        attachVideoToAllure(SAVE_VIDEO_PATH + testName);
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        logger.info(String.format("Test {%s} FAILED but with some percentage of success", result.getName()));
-        VideoManager.stopDefaultRecording(result.getName());
+        String testName = result.getName();
+        logger.info(String.format("Test {%s} FAILED but with some percentage of success", testName));
+        VideoManager.stopDefaultRecording(testName);
         appendLogToAllure();
         takeScreenshot();
-        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
+        attachVideoToAllure(SAVE_VIDEO_PATH + testName);
     }
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {
-        logger.info(String.format("Test {%s} FAILED due to the timeout", result.getName()));
-        VideoManager.stopDefaultRecording(result.getName());
+        String testName = result.getName();
+        logger.info(String.format("Test {%s} FAILED due to the timeout", testName));
+        VideoManager.stopDefaultRecording(testName);
         appendLogToAllure();
         takeScreenshot();
-        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
+        attachVideoToAllure(SAVE_VIDEO_PATH + testName);
     }
 
     /***
