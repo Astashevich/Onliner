@@ -1,6 +1,8 @@
 package by.onliner.listener;
 
 import by.onliner.driver.DriverManager;
+import by.onliner.recorder.VideoManager;
+import by.onliner.utils.ClearTextFileUtil;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;
 import io.qameta.allure.Attachment;
@@ -13,14 +15,9 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import static by.onliner.constants.FilePathConstants.LOG_PATH;
-import static by.onliner.constants.FilePathConstants.SAVE_VIDEO_PATH;
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 /***
@@ -29,6 +26,9 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 public class TestListener implements ITestListener {
 
     protected final Logger logger = LogManager.getLogger(this);
+
+    public static final String LOG_PATH = "target/logs/appTest.log";
+    public static final String SAVE_VIDEO_PATH = "./Videos/";
 
     @Override
     public void onStart(ITestContext context) {
@@ -52,7 +52,7 @@ public class TestListener implements ITestListener {
                 "on -> " + context.getEndDate());
         try {
             FileUtils.deleteDirectory(new File(SAVE_VIDEO_PATH));
-            clearFile();
+            ClearTextFileUtil.clearFile(LOG_PATH);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,12 +64,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {
         logger.info(String.format("Test {%s} STARTED", result.getName()));
-        try {
-            Recorder.startRecording(result.getName());
-        } catch (IOException | AWTException e) {
-            logger.info("Can't start video recording");
-            e.printStackTrace();
-        }
+        VideoManager.getVideoRecorder().startRecording(result.getName());
     }
 
     /***
@@ -78,14 +73,10 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult result) {
         logger.info(String.format("Test {%s} PASSED", result.getName()));
-        try {
-            Recorder.stopRecording(result.getName());
-            appendLogToAllure();
-            takeScreenshot();
-            attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        VideoManager.stopDefaultRecording(result.getName());
+        appendLogToAllure();
+        takeScreenshot();
+        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
     }
 
     /***
@@ -93,15 +84,11 @@ public class TestListener implements ITestListener {
      */
     @Override
     public void onTestFailure(ITestResult result) {
-        logger.debug(String.format("Test {%s} FAILED", result.getName()));
-        try {
-            Recorder.stopRecording(result.getName());
-            appendLogToAllure();
-            takeScreenshot();
-            attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        logger.info(String.format("Test {%s} FAILED", result.getName()));
+        VideoManager.stopDefaultRecording(result.getName());
+        appendLogToAllure();
+        takeScreenshot();
+        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
     }
 
     /***
@@ -110,40 +97,28 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSkipped(ITestResult result) {
         logger.info(String.format("Test {%s} SKIPPED", result.getName()));
-        try {
-            Recorder.stopRecording(result.getName());
-            appendLogToAllure();
-            takeScreenshot();
-            attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        VideoManager.stopDefaultRecording(result.getName());
+        appendLogToAllure();
+        takeScreenshot();
+        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         logger.info(String.format("Test {%s} FAILED but with some percentage of success", result.getName()));
-        try {
-            Recorder.stopRecording(result.getName());
-            appendLogToAllure();
-            takeScreenshot();
-            attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        VideoManager.stopDefaultRecording(result.getName());
+        appendLogToAllure();
+        takeScreenshot();
+        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
     }
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {
         logger.info(String.format("Test {%s} FAILED due to the timeout", result.getName()));
-        try {
-            Recorder.stopRecording(result.getName());
-            appendLogToAllure();
-            takeScreenshot();
-            attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        VideoManager.stopDefaultRecording(result.getName());
+        appendLogToAllure();
+        takeScreenshot();
+        attachVideoToAllure(SAVE_VIDEO_PATH + result.getName());
     }
 
     /***
@@ -155,7 +130,7 @@ public class TestListener implements ITestListener {
             return FileUtils.readFileToByteArray(new File(LOG_PATH));
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return new byte[0];
         }
     }
 
@@ -175,21 +150,8 @@ public class TestListener implements ITestListener {
         try {
             return Files.toByteArray(new File(videoFileLocation + ".mp4"));
         } catch (IOException e) {
-            logger.debug("attachVideoToAllure(): FAILED\n" + e.getMessage());
+            logger.info("attachVideoToAllure(): FAILED\n" + e.getMessage());
             return new byte[0];
-        }
-    }
-
-    /***
-     * Clear log file after attaching log file to report.
-     */
-    private void clearFile() {
-        try {
-            PrintWriter writer = new PrintWriter(LOG_PATH);
-            writer.print("");
-            writer.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
     }
 }
