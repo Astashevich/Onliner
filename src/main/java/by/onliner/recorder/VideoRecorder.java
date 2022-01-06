@@ -13,7 +13,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-import static by.onliner.listener.TestListener.SAVE_VIDEO_PATH;
+import static by.onliner.constants.OnlinerConstants.SAVE_VIDEO_PATH;
 import static org.monte.media.FormatKeys.*;
 import static org.monte.media.VideoFormatKeys.*;
 

@@ -2,7 +2,7 @@ package by.onliner.listener;
 
 import by.onliner.driver.DriverManager;
 import by.onliner.recorder.VideoManager;
-import by.onliner.utils.ClearTextFileUtil;
+import by.onliner.utils.FileUtil;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;
 import io.qameta.allure.Attachment;
@@ -18,6 +18,8 @@ import org.testng.ITestResult;
 import java.io.File;
 import java.io.IOException;
 
+import static by.onliner.constants.OnlinerConstants.LOG_PATH;
+import static by.onliner.constants.OnlinerConstants.SAVE_VIDEO_PATH;
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 /***
@@ -26,9 +28,6 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 public class TestListener implements ITestListener {
 
     protected final Logger logger = LogManager.getLogger(this);
-
-    public static final String LOG_PATH = "target/logs/appTest.log";
-    public static final String SAVE_VIDEO_PATH = "./Videos/";
 
     @Override
     public void onStart(ITestContext context) {
@@ -52,7 +51,7 @@ public class TestListener implements ITestListener {
                 "on -> " + context.getEndDate());
         try {
             FileUtils.deleteDirectory(new File(SAVE_VIDEO_PATH));
-            ClearTextFileUtil.clearFile(LOG_PATH);
+            FileUtil.clearTextFile(LOG_PATH);
         } catch (IOException e) {
             e.printStackTrace();
         }

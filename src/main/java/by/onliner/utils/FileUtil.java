@@ -4,14 +4,14 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 /***
- * The class is used to give functional of clear text file
+ * The class is used to give functionality of interaction with files.
  */
-public class ClearTextFileUtil {
+public class FileUtil {
 
     /***
-     * Clear text file after attaching text file to report.
+     * Clear text file .
      */
-    public static void clearFile(String path) {
+    public static void clearTextFile(String path) {
         try {
             PrintWriter writer = new PrintWriter(path);
             writer.print("");
