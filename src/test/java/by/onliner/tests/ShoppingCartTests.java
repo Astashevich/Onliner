@@ -1,12 +1,12 @@
 package by.onliner.tests;
 
 import by.onliner.AbstractTest;
-import by.onliner.test_dev.anotation.TestType;
+import by.onliner.core.anotation.TestType;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static by.onliner.constants.TestType.*;
-import static by.onliner.utils.EqualsUtil.equalContains;
+import static by.onliner.core.utils.EqualsUtil.equalContains;
 
 @Feature("Shopping cart")
 public class ShoppingCartTests extends AbstractTest {
