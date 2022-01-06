@@ -20,6 +20,9 @@
         <surefire-testng.version>2.12.4</surefire-testng.version>
         <maven-compiler.version>3.8.1</maven-compiler.version>
         <cucumber.version>7.1.0</cucumber.version>
+        <monte.version>0.7.7.0</monte.version>
+        <jave-core.version>2.4.5</jave-core.version>
+        <jave-native-win64.version>2.4.5</jave-native-win64.version>
 
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -80,6 +83,21 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stephenc.monte</groupId>
+            <artifactId>monte-screen-recorder</artifactId>
+            <version>${monte.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ws.schild</groupId>
+            <artifactId>jave-core</artifactId>
+            <version>${jave-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ws.schild</groupId>
+            <artifactId>jave-native-win64</artifactId>
+            <version>${jave-native-win64.version}</version>
         </dependency>
     </dependencies>
 
