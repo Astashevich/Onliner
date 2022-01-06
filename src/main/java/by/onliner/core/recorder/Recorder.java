@@ -1,4 +1,4 @@
-package by.onliner.recorder;
+package by.onliner.core.recorder;
 
 import org.monte.media.Format;
 import org.monte.media.Registry;

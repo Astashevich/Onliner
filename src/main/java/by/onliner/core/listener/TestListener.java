@@ -1,8 +1,8 @@
-package by.onliner.listener;
+package by.onliner.core.listener;
 
-import by.onliner.driver.DriverManager;
-import by.onliner.recorder.VideoManager;
-import by.onliner.utils.FileUtil;
+import by.onliner.core.driver.DriverManager;
+import by.onliner.core.recorder.VideoManager;
+import by.onliner.core.utils.FileUtil;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;
 import io.qameta.allure.Attachment;

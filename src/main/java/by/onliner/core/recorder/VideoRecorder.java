@@ -1,6 +1,6 @@
-package by.onliner.recorder;
+package by.onliner.core.recorder;
 
-import by.onliner.driver.DriverManager;
+import by.onliner.core.driver.DriverManager;
 import org.monte.media.Format;
 import org.monte.media.FormatKeys;
 import org.monte.media.math.Rational;

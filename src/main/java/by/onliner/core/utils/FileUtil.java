@@ -1,4 +1,4 @@
-package by.onliner.utils;
+package by.onliner.core.utils;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
