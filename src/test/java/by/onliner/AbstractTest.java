@@ -5,12 +5,12 @@ import by.onliner.core.driver.DriverManager;
 import by.onliner.page.CatalogItemPage;
 import by.onliner.page.MainPage;
 import by.onliner.page.ShoppingCartPage;
-import com.google.common.collect.ImmutableMap;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import static by.onliner.core.driver.DriverManager.getDriver;
 import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
+@Listeners(TestListener.class)
 public abstract class AbstractTest {
 
     protected MainPage mainPage;
@@ -27,13 +27,6 @@ public abstract class AbstractTest {
         mainPage = new MainPage();
         catalogPageItem = new CatalogItemPage();
         shoppingCartPage = new ShoppingCartPage();
-
-        allureEnvironmentWriter(
-                ImmutableMap.<String, String>builder()
-                        .put("Browser", "Chrome")
-                        .put("Browser.Version", "96.0.4664.110 (Official build), (64 bit)")
-                        .build(), System.getProperty("user.dir")
-                        + "/target/allure-results/");
     }
 
     /***
