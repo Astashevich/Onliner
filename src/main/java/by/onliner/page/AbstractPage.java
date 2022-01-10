@@ -1,8 +1,8 @@
 package by.onliner.page;
 
 
-import by.onliner.driver.DriverManager;
-import by.onliner.elements.factory.ElementFactory;
+import by.onliner.core.driver.DriverManager;
+import by.onliner.core.elements.factory.ElementFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +19,7 @@ public abstract class AbstractPage {
     }
 
     /***
-     * Checks the element presence on a by.onliner.driver.
+     * Checks the element presence on a by.onliner.core.driver.
      */
     protected abstract void waitForPageOpened();
 }

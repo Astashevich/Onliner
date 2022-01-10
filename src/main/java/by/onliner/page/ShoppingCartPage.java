@@ -1,10 +1,10 @@
 package by.onliner.page;
 
-import by.onliner.driver.DriverManager;
-import by.onliner.elements.widget.Button;
-import by.onliner.elements.widget.Text;
-import by.onliner.utils.ActionsHelper;
-import by.onliner.utils.Waiter;
+import by.onliner.core.driver.DriverManager;
+import by.onliner.core.elements.widget.Button;
+import by.onliner.core.elements.widget.Text;
+import by.onliner.core.utils.ActionsHelper;
+import by.onliner.core.utils.Waiter;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 

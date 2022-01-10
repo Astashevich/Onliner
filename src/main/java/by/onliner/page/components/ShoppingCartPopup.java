@@ -1,7 +1,7 @@
 package by.onliner.page.components;
 
-import by.onliner.elements.widget.Button;
-import by.onliner.utils.Waiter;
+import by.onliner.core.elements.widget.Button;
+import by.onliner.core.utils.Waiter;
 import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;

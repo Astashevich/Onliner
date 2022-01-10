@@ -1,11 +1,11 @@
 package by.onliner.cucumber.hook;
 
-import by.onliner.driver.DriverFactory;
-import by.onliner.driver.DriverManager;
+import by.onliner.core.driver.DriverFactory;
+import by.onliner.core.driver.DriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import static by.onliner.driver.DriverFactory.getDriver;
-import static by.onliner.driver.DriverManager.getDriver;
+import static by.onliner.core.driver.DriverFactory.getDriver;
+import static by.onliner.core.driver.DriverManager.getDriver;
 
 /***
  * Hook is used to initiate and cancel work of the current thread webdriver

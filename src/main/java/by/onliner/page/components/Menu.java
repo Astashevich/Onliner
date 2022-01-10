@@ -1,10 +1,10 @@
 package by.onliner.page.components;
 
-import by.onliner.elements.widget.Button;
-import by.onliner.elements.widget.TextInput;
+import by.onliner.core.elements.widget.Button;
+import by.onliner.core.elements.widget.TextInput;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
-import by.onliner.utils.Waiter;
+import by.onliner.core.utils.Waiter;
 
 public class Menu extends AbstractComponent {
 
