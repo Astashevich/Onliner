@@ -2,13 +2,14 @@ package by.onliner;
 
 import by.onliner.core.driver.DriverFactory;
 import by.onliner.core.driver.DriverManager;
+import by.onliner.core.listener.TestListener;
 import by.onliner.page.CatalogItemPage;
 import by.onliner.page.MainPage;
 import by.onliner.page.ShoppingCartPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import static by.onliner.core.driver.DriverManager.getDriver;
-import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
 
 @Listeners(TestListener.class)
 public abstract class AbstractTest {
