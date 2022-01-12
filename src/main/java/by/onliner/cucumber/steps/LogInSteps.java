@@ -12,14 +12,13 @@ public class LogInSteps extends AbstractSteps{
         mainPage.getMenu().openLogInPage();
     }
 
-
     @When("Click log-In form button")
     public void clickLogInFormButton() {
         logInPage.clickLogInFormButton();
     }
 
-    @Then("The actual field warning text should much expected warning text {string}")
-    public void theActualLogInWarningTextShouldMuchExpectedWarningText(String expectedMessage) {
+    @Then("Verify warning message matches {string}")
+    public void isTheActualLogInWarningTextMuchTheExpectedWarningText(String expectedMessage) {
         String actualLogInWarningText = logInPage.getInputFieldWarningText();
         Assert.assertEquals(actualLogInWarningText, expectedMessage, String.format("The actual log-in " +
                 "warning text [%s] don't much expected warning text [%s]", actualLogInWarningText, expectedMessage));
@@ -30,9 +29,9 @@ public class LogInSteps extends AbstractSteps{
         logInPage.inputLogIn(login);
     }
 
-    @Then("Chek log-In form on visible")
-    public void chekLogInFormOnVisible() {
-        logInPage.isLogInPageDisplayedAfterTest();
+    @Then("Chek log-In form is visible")
+    public void chekLogInFormIsVisible() {
+        Assert.assertTrue(logInPage.isLogInPageDisplayed(), "Log-In page is not displayed after test");
     }
 
     @When("Input password {string} in password input field")

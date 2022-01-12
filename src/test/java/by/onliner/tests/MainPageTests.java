@@ -8,19 +8,20 @@ import org.testng.annotations.Test;
 
 import static by.onliner.constants.TestType.SMOKE;
 import static by.onliner.core.utils.EqualsUtil.equalContains;
+import static by.onliner.page.AboutCompanyPage.ABOUT_LINK;
 
 @Feature("Main")
-public class MainTests extends AbstractTest {
+public class MainPageTests extends AbstractTest {
 
     @TestType(value = SMOKE)
     @Test(description = "[Test-Case ID:ONL_005] Test for opening the 'About' page")
-    public void openAboutPageFromFooter() {
+    public void openAboutPageFromFooterTest() {
         mainPage.openPage();
 
         mainPage.getFooter().clickOnAboutCompanyLink();
         String actualPageMessage = aboutCompanyPage.getAboutCompanyPageMessage();
 
-        Assert.assertTrue(aboutCompanyPage.isPageOpened(), "About company page isn't opened");
+        Assert.assertTrue(aboutCompanyPage.isPageOpened(ABOUT_LINK), "About company page isn't opened");
         Assert.assertTrue(equalContains("о сайте", actualPageMessage),
                 String.format("The page message [%s] don't contain [%s]", actualPageMessage, "о сайте"));
     }

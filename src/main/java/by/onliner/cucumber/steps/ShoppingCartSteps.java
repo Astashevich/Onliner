@@ -54,14 +54,13 @@ public class ShoppingCartSteps extends AbstractSteps {
 
     @When("Get item name")
     public void getItemName() {
-        ScenarioContext.getScenarioContext().setContext(Context.NAME, catalogPageItem.getItemName());
+        ScenarioContext.getScenarioContext().setContext(Context.ITEM_NAME, catalogPageItem.getItemName());
     }
 
-
     @Then("Item name from shopping cart must match the chosen item from catalog")
-    public void itemNameFromShoppingCartMustMatchTheChosenItemFromCatalog() {
-        String itemNameFromCatalog = String.valueOf(ScenarioContext.getScenarioContext().getContext(Context.NAME));
-        String itemNameFromCart = shoppingCartPage.getItemName();
+    public void isItemNameFromShoppingCartMatchTheChosenItemFromCatalog() {
+        String itemNameFromCatalog = String.valueOf(ScenarioContext.getScenarioContext().getContext(Context.ITEM_NAME));
+        String itemNameFromCart = shoppingCartPage.getItemNameText();
         Assert.assertEquals(itemNameFromCatalog, itemNameFromCart, String.format("Item name [%s] don't match " +
                 "item name [%s] from shopping cart", itemNameFromCatalog, itemNameFromCart));
     }
@@ -77,26 +76,23 @@ public class ShoppingCartSteps extends AbstractSteps {
         ScenarioContext.getScenarioContext().setContext(Context.PRICE, shoppingCartPage.getPrice());
     }
 
-
     @And("Click + button")
     public void clickPlusButton() {
         shoppingCartPage.clickQuantityInputPlusButton();
     }
 
-
     @Then("The number from quantity input will match [{int}]")
-    public void theNumberFromQuantityInputWillMatch(int expectedNumber) {
+    public void isTheNumberFromQuantityInputMatchExpectedNumber(int expectedNumber) {
         int numberFromQuantityInput = shoppingCartPage.getNumberFromQuantityInput();
         Assert.assertEquals(numberFromQuantityInput, expectedNumber, String.format("The number [%d] from quantity input don't" +
                 " match [%d]",numberFromQuantityInput, expectedNumber));
     }
 
-
-    @And("The price after adding the same item was match first price*{int}")
-    public void thePriceAfterAddingTheSameItemWasMatchFirstPrice(int arg) {
+    @And("The price after adding the same item shouldn't match first price*{int}")
+    public void isThePriceAfterAddingTheSameItemNotMatchFirstPrice(int arg) {
         int itemPrice = (Integer) ScenarioContext.getScenarioContext().getContext(Context.PRICE);
         int itemPriceAfterAddingItem = shoppingCartPage.getPrice();
         Assert.assertEquals(itemPriceAfterAddingItem, itemPrice*arg, String.format("The price [%d] after " +
-                "adding the same item was match first price [%d]", itemPriceAfterAddingItem, itemPrice));
+                "adding the same item shouldn't match first price [%d]", itemPriceAfterAddingItem, itemPrice));
     }
 }

@@ -26,4 +26,4 @@ Feature: Tests for shopping cart
         When Get item price
         * Click + button
         Then The number from quantity input will match [2]
-        * The price after adding the same item was match first price*2
+        * The price after adding the same item shouldn't match first price*2

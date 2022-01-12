@@ -1,12 +1,12 @@
 package by.onliner.page.components;
 
 import by.onliner.core.elements.widget.Button;
-import by.onliner.core.elements.widget.TextInput;
 import by.onliner.core.elements.widget.Text;
-import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
+import by.onliner.core.elements.widget.TextInput;
 import by.onliner.core.utils.Waiter;
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class Menu extends AbstractComponent {
 
@@ -22,7 +22,10 @@ public class Menu extends AbstractComponent {
     private TextInput mainSearchField;
 
     @FindBy(className = "product__title-link")
-    private Text searchedItemName;
+    private Text searchedItemNameText;
+
+    @FindBy(className = "modal-iframe")
+    private WebElement searchFieldFrame;
 
     public Menu() {
         super();
@@ -60,9 +63,9 @@ public class Menu extends AbstractComponent {
      */
     @Step("Read name of the first searched item")
     public String getNameOfSearchedItem() {
-        driver.switchTo().frame(driver.findElement(By.className("modal-iframe")));
-        Waiter.waitForVisibility(searchedItemName);
-        String itemName = searchedItemName.getText().toLowerCase();
+        driver.switchTo().frame(searchFieldFrame);
+        Waiter.waitForVisibility(searchedItemNameText);
+        String itemName = searchedItemNameText.getText().toLowerCase();
         logger.info("Get name [" + itemName + "] of searched item");
         return itemName;
     }

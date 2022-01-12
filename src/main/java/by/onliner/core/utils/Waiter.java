@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+
 import java.time.Duration;
 
 /***
@@ -16,6 +17,7 @@ public class Waiter {
 
     private static final Duration TIMEOUT = Duration.ofSeconds(3);
     private static final Duration POLLING = Duration.ofMillis(100);
+    private static final long ONE_THOUSAND = 1000L;
 
     private static final FluentWait<WebDriver> fluentWait = new FluentWait<>(DriverManager.getDriver());
 
@@ -47,7 +49,7 @@ public class Waiter {
 
     /***
      * Waits until the element is visible using custom timing
-     */
+     * */
     public static void waitForVisibility(WebElement element, int timeoutSec) {
         fluentWait
                 .withTimeout(Duration.ofSeconds(timeoutSec))
@@ -60,9 +62,11 @@ public class Waiter {
      */
     public static void sleep(int timeoutSec) {
         try {
-            Thread.sleep(timeoutSec* 1000L);
+            Thread.sleep(timeoutSec * ONE_THOUSAND);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    //Добавить Awaitlity
 }

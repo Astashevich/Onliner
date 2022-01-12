@@ -64,7 +64,7 @@ public class LogInPage extends AbstractPage {
         logger.info("Click 'Войти' button");
     }
 
-    public boolean isLogInPageDisplayedAfterTest() {
+    public boolean isLogInPageDisplayed() {
         try {
             Waiter.sleep(1);
             logger.info("Checks log-In page on visible");

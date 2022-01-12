@@ -4,12 +4,13 @@ import by.onliner.core.elements.widget.Text;
 import by.onliner.core.utils.Waiter;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
-import static by.onliner.constants.OnlinerConstants.ABOUT_LINK;
 
 public class AboutCompanyPage extends AbstractPage{
 
     @FindBy(xpath = "//div[@class='news-header__title']/h1")
     private Text pageMessage;
+
+    public static final String ABOUT_LINK = "/about";
 
     public AboutCompanyPage() {
         super();
@@ -21,13 +22,13 @@ public class AboutCompanyPage extends AbstractPage{
     }
 
     /***
-     * Read current url of page
+     * Check if current url of page contains expected link
      * @return boolean of method
      */
-    @Step("Check if the page is open")
-    public boolean isPageOpened() {
-        logger.info(String.format("Check the url on contain [%s]", ABOUT_LINK));
-        return driver.getCurrentUrl().contains(ABOUT_LINK);
+    @Step("Check if the page is opened")
+    public boolean isPageOpened(String link) {
+        logger.info(String.format("Check the url contains [%s]", link));
+        return driver.getCurrentUrl().contains(link);
     }
 
     /***

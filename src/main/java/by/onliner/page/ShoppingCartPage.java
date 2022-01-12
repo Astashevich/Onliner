@@ -9,6 +9,9 @@ import by.onliner.core.utils.Waiter;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ShoppingCartPage extends AbstractPage {
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__title')]")
@@ -24,7 +27,7 @@ public class ShoppingCartPage extends AbstractPage {
     private Text emptyCartMessage;
 
     @FindBy(css = ".cart-form__description_condensed-other .cart-form__link_base-alter")
-    private Text itemName;
+    private Text itemNameText;
 
     @FindBy(xpath = "//a[contains(@class, 'cart-form__button') and text()]")
     private Button completeOrderButton;
@@ -36,7 +39,7 @@ public class ShoppingCartPage extends AbstractPage {
     private TextInput quantityInput;
 
     @FindBy(xpath = "//div[contains(@class, 'helpers_hide_tablet')]/div[contains(@class, 'cart-form__description_condensed-another')]/span")
-    private Text itemPrice;
+    private Text itemPriceText;
 
     public ShoppingCartPage() {
         super();
@@ -70,7 +73,7 @@ public class ShoppingCartPage extends AbstractPage {
     /***
      * Get a message from empty cart.
      */
-    @Step("Read the empty cart message")
+    @Step("Get the empty cart message")
     public String getEmptyCartMassage() {
         DriverManager.getDriver().navigate().refresh();
         Waiter.waitForVisibility(emptyCartMessage);
@@ -82,11 +85,11 @@ public class ShoppingCartPage extends AbstractPage {
      * Get the item name from shopping cart list.
      * @return name of the item
      */
-    @Step("Read the item name")
-    public String getItemName() {
-        Waiter.waitForVisibility(itemName);
-        logger.info(String.format("Read the item name [%s] from shopping cart", itemName.getText()));
-        return itemName.getText().trim();
+    @Step("Get the item name")
+    public String getItemNameText() {
+        Waiter.waitForVisibility(itemNameText);
+        logger.info(String.format("Read the item name [%s] from shopping cart", itemNameText.getText()));
+        return itemNameText.getText().trim();
     }
 
     /***
@@ -96,9 +99,7 @@ public class ShoppingCartPage extends AbstractPage {
     @Step("Chek [Перейти к оформлению] button for visibility")
     public boolean isCompleteOrderButtonVisible() {
         boolean visibility = completeOrderButton.isDisplayed();
-        if (visibility) {
-            logger.info("'Перейти к оформлению' button is visible");
-        }
+        logger.info(String.format("'Перейти к оформлению' button visibility is {%s}", visibility));
         return visibility;
     }
 
@@ -130,8 +131,13 @@ public class ShoppingCartPage extends AbstractPage {
      */
     @Step("Get price")
     public int getPrice() {
-        Waiter.waitForVisibility(itemPrice);
-        int price = Integer.parseInt(itemPrice.getText().substring(0, itemPrice.getText().length() - 6));
+        Waiter.waitForVisibility(itemPriceText);
+        Pattern pattern = Pattern.compile("^[0-9]+");
+        Matcher matcher = pattern.matcher(itemPriceText.getText());
+        int price = 0;
+        while (matcher.find()) {
+            price = Integer.parseInt(matcher.group());
+        }
         logger.info(String.format("Get price [%d]", price));
         return price;
     }

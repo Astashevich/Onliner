@@ -5,7 +5,8 @@ import by.onliner.core.anotation.TestType;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static by.onliner.constants.TestType.*;
+
+import static by.onliner.constants.TestType.SMOKE;
 import static by.onliner.core.utils.EqualsUtil.equalContains;
 
 @Feature("Shopping cart")
@@ -21,9 +22,9 @@ public class ShoppingCartTests extends AbstractTest {
         catalogPageItem.addToCart();
         mainPage.getMenu().openShoppingCartPage();
 
-        String itemNameFromCart = shoppingCartPage.getItemName();
+        String itemNameFromCart = shoppingCartPage.getItemNameText();
         Assert.assertEquals(itemNameFromCatalog, itemNameFromCart, String.format("Item name [%s] don't match " +
-                "item name [%s] from shopping cart", itemNameFromCatalog, shoppingCartPage.getItemName()));
+                "item name [%s] from shopping cart", itemNameFromCatalog, shoppingCartPage.getItemNameText()));
         Assert.assertTrue(shoppingCartPage.isCompleteOrderButtonVisible(), "[Перейти к оформлению] button isn't visible");
     }
 
@@ -60,8 +61,8 @@ public class ShoppingCartTests extends AbstractTest {
         int itemPriceAfterAddingItem = shoppingCartPage.getPrice();
 
         Assert.assertEquals(numberFromQuantityInput, 2, String.format("The number [%d] from quantity input don't" +
-                " match [2]",numberFromQuantityInput));
-        Assert.assertEquals(itemPriceAfterAddingItem, itemPrice*2, String.format("The price [%d] after " +
+                " match [2]", numberFromQuantityInput));
+        Assert.assertEquals(itemPriceAfterAddingItem, itemPrice * 2, String.format("The price [%d] after " +
                 "adding the same item was match first price [%d]", itemPriceAfterAddingItem, itemPrice));
     }
 }

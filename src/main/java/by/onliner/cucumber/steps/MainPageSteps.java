@@ -7,20 +7,20 @@ import org.testng.Assert;
 
 import static by.onliner.core.utils.EqualsUtil.equalContains;
 
-public class MainSteps extends AbstractSteps{
+public class MainPageSteps extends AbstractSteps{
 
     @When("Click [О компании] link")
     public void clickOnAboutCompanyLink() {
         mainPage.getFooter().clickOnAboutCompanyLink();
     }
 
-    @Then("Page url should contain [about]")
-    public void pageUrlShouldContainAbout() {
-        aboutCompanyPage.isPageOpened();
+    @Then("Page url should contain {string}")
+    public void isPageUrlContainLink(String link) {
+        aboutCompanyPage.isPageOpened(link);
     }
 
     @And("Page message should contain {string}")
-    public void pageMessageShouldContain(String expectedText) {
+    public void isPageMessageContainExpectedMessage(String expectedText) {
         String actualPageMessage = aboutCompanyPage.getAboutCompanyPageMessage();
         Assert.assertTrue(equalContains(expectedText, actualPageMessage),
                 String.format("The page message [%s] don't contain [%s]", actualPageMessage, expectedText));
