@@ -2,6 +2,7 @@ package by.onliner.tests;
 
 import by.onliner.AbstractTest;
 import by.onliner.core.anotation.TestType;
+import by.onliner.core.utils.RandomSymbolUtil;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -43,7 +44,7 @@ public class LogInTests extends AbstractTest {
                 {"", "", INCORRECT_LOG_IN_WARNING_TEXT},
                 {LOGIN, "", INCORRECT_PASSWORD_WARNING_TEXT},
                 {LOGIN_WITH_FEW_GAPS, PASSWORD, INCORRECT_LOG_IN_WARNING_TEXT},
-                {faker.internet().emailAddress(), "", INCORRECT_PASSWORD_WARNING_TEXT},
+                {RandomSymbolUtil.getRandomLogin(), "", INCORRECT_PASSWORD_WARNING_TEXT},
                 {SPACE, SPACE, INCORRECT_LOG_IN_WARNING_TEXT}
         };
     }

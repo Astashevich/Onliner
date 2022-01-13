@@ -22,8 +22,8 @@ Feature: Tests for shopping cart
       Then Appeared information should contain "Вы удалили"
       * Expected empty cart message should contain "Ваша корзина пуста"
 
-      Scenario: [Test-Case ID:ONL_003] Adding one more same item in the shopping cart by [+] button
-        When Get item price
-        * Click + button
-        Then The number from quantity input will match [2]
-        * The price after adding the same item shouldn't match first price*2
+    Scenario: [Test-Case ID:ONL_003] Adding one more same item in the shopping cart by [+] button
+      When Get item price
+      * Click + button
+      Then The number from quantity input will match [2]
+      * The price after adding the same item shouldn't match first price*2

@@ -13,7 +13,7 @@ import static by.onliner.core.utils.EqualsUtil.equalContains;
 @Feature("Catalog")
 public class CatalogTests extends AbstractTest {
 
-    public static final String IPHONE = "iphone 13";
+    private static final String IPHONE = "iphone 13";
 
     @TestType(value = {SMOKE, REGRESSION})
     @Test(description = "[Test-Case ID:ONL_004] Test for finding item by searcher")

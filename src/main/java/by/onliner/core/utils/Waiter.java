@@ -49,7 +49,7 @@ public class Waiter {
 
     /***
      * Waits until the element is visible using custom timing
-     * */
+     */
     public static void waitForVisibility(WebElement element, int timeoutSec) {
         fluentWait
                 .withTimeout(Duration.ofSeconds(timeoutSec))
@@ -67,6 +67,4 @@ public class Waiter {
             e.printStackTrace();
         }
     }
-
-    //Добавить Awaitlity
 }

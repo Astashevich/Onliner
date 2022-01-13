@@ -4,7 +4,6 @@ import by.onliner.core.driver.DriverFactory;
 import by.onliner.core.driver.DriverManager;
 import by.onliner.core.listener.TestListener;
 import by.onliner.page.*;
-import com.github.javafaker.Faker;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -19,7 +18,6 @@ public abstract class AbstractTest {
     protected ShoppingCartPage shoppingCartPage;
     protected AboutCompanyPage aboutCompanyPage;
     protected LogInPage logInPage;
-    protected Faker faker = new Faker();
 
     /***
      * Set and open the local thread browser type with by.onliner.core.driver initialisation.
