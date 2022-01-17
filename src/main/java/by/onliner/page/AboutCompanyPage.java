@@ -10,8 +10,6 @@ public class AboutCompanyPage extends AbstractPage{
     @FindBy(xpath = "//div[@class='news-header__title']/h1")
     private Text pageMessage;
 
-    public static final String ABOUT_LINK = "/about";
-
     public AboutCompanyPage() {
         super();
     }

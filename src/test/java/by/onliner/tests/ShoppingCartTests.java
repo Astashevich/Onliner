@@ -55,14 +55,14 @@ public class ShoppingCartTests extends AbstractTest {
         catalogPageItem.addToCart();
         mainPage.getMenu().openShoppingCartPage();
 
-        int itemPrice = shoppingCartPage.getPrice();
+        double itemPrice = shoppingCartPage.getPrice();
         shoppingCartPage.clickQuantityInputPlusButton();
         int numberFromQuantityInput = shoppingCartPage.getNumberFromQuantityInput();
-        int itemPriceAfterAddingItem = shoppingCartPage.getPrice();
+        double itemPriceAfterAddingItem = shoppingCartPage.getPrice();
 
         Assert.assertEquals(numberFromQuantityInput, 2, String.format("The number [%d] from quantity input don't" +
                 " match [2]", numberFromQuantityInput));
-        Assert.assertEquals(itemPriceAfterAddingItem, itemPrice * 2, String.format("The price [%d] after " +
-                "adding the same item was match first price [%d]", itemPriceAfterAddingItem, itemPrice));
+        Assert.assertEquals(itemPriceAfterAddingItem, itemPrice * 2, String.format("The price [%f] after " +
+                "adding the same item was match first price [%f]", itemPriceAfterAddingItem, itemPrice));
     }
 }

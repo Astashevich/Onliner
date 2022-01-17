@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class ShoppingCartPage extends AbstractPage {
 
-    private static final String priceRegexPattern = "^[0-9]+";
+    private static final String PRICE_REGEX_PATTERN = "^[0-9]+.[0-9]+";
 
     @FindBy(xpath = "//div[contains(@class, 'cart-form__title')]")
     private Text openedShoppingCartMessage;
@@ -113,7 +113,7 @@ public class ShoppingCartPage extends AbstractPage {
         Waiter.elementToBeClickable(quantityInputPlusButton);
         quantityInputPlusButton.click();
         logger.info("Click '+' button");
-        Waiter.sleep(2);
+        Waiter.waitForElementToBeChanged(itemPriceText);
     }
 
     /***
@@ -133,13 +133,13 @@ public class ShoppingCartPage extends AbstractPage {
      * @return integer price of item
      */
     @Step("Get price")
-    public int getPrice() {
+    public double getPrice() {
         Waiter.waitForVisibility(itemPriceText);
-        Pattern pattern = Pattern.compile(priceRegexPattern);
-        Matcher matcher = pattern.matcher(itemPriceText.getText());
+        Pattern pattern = Pattern.compile(PRICE_REGEX_PATTERN);
+        Matcher matcher = pattern.matcher(itemPriceText.getText().replace(",", "."));
         matcher.find();
-        int price = Integer.parseInt(matcher.group());
-        logger.info(String.format("Get price [%d]", price));
+        double price = Double.parseDouble(matcher.group());
+        logger.info(String.format("Get price [%f]", price));
         return price;
     }
 }

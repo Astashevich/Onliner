@@ -83,16 +83,16 @@ public class ShoppingCartSteps extends AbstractSteps {
 
     @Then("The number from quantity input will match [{int}]")
     public void isTheNumberFromQuantityInputMatchExpectedNumber(int expectedNumber) {
-        int numberFromQuantityInput = shoppingCartPage.getNumberFromQuantityInput();
-        Assert.assertEquals(numberFromQuantityInput, expectedNumber, String.format("The number [%d] from quantity input don't" +
+        double numberFromQuantityInput = shoppingCartPage.getNumberFromQuantityInput();
+        Assert.assertEquals(numberFromQuantityInput, expectedNumber, String.format("The number [%f] from quantity input don't" +
                 " match [%d]",numberFromQuantityInput, expectedNumber));
     }
 
     @And("The price after adding the same item shouldn't match first price*{int}")
     public void isThePriceAfterAddingTheSameItemNotMatchFirstPrice(int arg) {
-        int itemPrice = (Integer) ScenarioContext.getScenarioContext().getContext(Context.PRICE);
-        int itemPriceAfterAddingItem = shoppingCartPage.getPrice();
-        Assert.assertEquals(itemPriceAfterAddingItem, itemPrice*arg, String.format("The price [%d] after " +
-                "adding the same item shouldn't match first price [%d]", itemPriceAfterAddingItem, itemPrice));
+        double itemPrice = (Double) ScenarioContext.getScenarioContext().getContext(Context.PRICE);
+        double itemPriceAfterAddingItem = shoppingCartPage.getPrice();
+        Assert.assertEquals(itemPriceAfterAddingItem, itemPrice*arg, String.format("The price [%f] after " +
+                "adding the same item shouldn't match first price [%f]", itemPriceAfterAddingItem, itemPrice));
     }
 }

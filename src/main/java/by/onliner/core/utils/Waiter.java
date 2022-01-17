@@ -1,12 +1,14 @@
 package by.onliner.core.utils;
 
 import by.onliner.core.driver.DriverManager;
+import org.awaitility.Awaitility;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -66,5 +68,11 @@ public class Waiter {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void waitForElementToBeChanged(WebElement element) {
+        String elementText = element.getText();
+        Awaitility.await().pollInterval(POLLING).atMost(TIMEOUT)
+                .untilAsserted(() -> Assert.assertNotEquals(elementText, element.getText()));
     }
 }

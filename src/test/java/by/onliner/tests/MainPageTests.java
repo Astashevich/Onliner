@@ -6,11 +6,11 @@ import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static by.onliner.constants.OnlinerConstants.ABOUT_LINK;
 import static by.onliner.constants.TestType.SMOKE;
 import static by.onliner.core.utils.EqualsUtil.equalContains;
-import static by.onliner.page.AboutCompanyPage.ABOUT_LINK;
 
-@Feature("Main")
+@Feature("MainPage")
 public class MainPageTests extends AbstractTest {
 
     @TestType(value = SMOKE)
