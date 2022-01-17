@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Shopping cart suite">
+    <listeners>
+        <listener class-name="by.onliner.core.transformer.AnnotationTransformer"/>
+    </listeners>
+    <test name="Shopping cart tests">
+        <classes>
+            <class name="by.onliner.tests.ShoppingCartTests"/>
+        </classes>
+    </test>
+</suite>
