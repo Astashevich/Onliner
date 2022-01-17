@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Arrays;
+import java.util.Properties;
 
 /***
  * Project environment data
@@ -11,25 +12,16 @@ import java.util.Arrays;
 public class EnvironmentConfig {
 
     private static final String HOST = "host";
-    private static final String LOG_PATH = "logPath";
-    private static final String SAVE_VIDEO_PATH = "saveVideoPath";
+    private static final Properties properties;
 
-    private final static String ENVIRONMENT_PROPERTIES = "application-%s.properties";
-    private final static String ENVIRONMENT_DEFAULT_PROPERTY = "application-local.properties";
+    private final static String ENVIRONMENT_PROPERTIES_FILENAME = String.format("application-%s.properties", Environment.getEnvironment().getName());
+
+    static {
+        properties = PropertyReader.getInstance().readPropertyFile(ENVIRONMENT_PROPERTIES_FILENAME);
+    }
 
     public static String getHost() {
-        return PropertyReader.getPropertyReader()
-                .getProperty(String.format(ENVIRONMENT_PROPERTIES, Environment.setEnvironment().getName()), HOST);
-    }
-
-    public static String getLogPath() {
-        return PropertyReader.getPropertyReader()
-                .getProperty(String.format(ENVIRONMENT_PROPERTIES, Environment.setEnvironment().getName()), LOG_PATH);
-    }
-
-    public static String getSaveVideoPath() {
-        return PropertyReader.getPropertyReader()
-                .getProperty(String.format(ENVIRONMENT_PROPERTIES, Environment.setEnvironment().getName()), SAVE_VIDEO_PATH);
+        return properties.getProperty(HOST);
     }
 
     @Getter
@@ -41,10 +33,8 @@ public class EnvironmentConfig {
 
         String name;
 
-        public static Environment setEnvironment() {
-            String defaultEnvironment = System.getProperty("env");
-            String environment = defaultEnvironment == null ? PropertyReader.getPropertyReader()
-                            .getProperty(ENVIRONMENT_DEFAULT_PROPERTY, "environment") : defaultEnvironment;
+        public static Environment getEnvironment() {
+            String environment = System.getProperty("env");
             return Environment.readValue(environment);
         }
 

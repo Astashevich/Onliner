@@ -26,7 +26,7 @@ public final class PropertyReader {
      * Reads property file
      * @param fileName property file
      */
-    private void readPropertyFile(String fileName) {
+    public Properties readPropertyFile(String fileName) {
         if (!propertiesHashMap.containsKey(fileName)) {
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream(fileName);
             try {
@@ -37,9 +37,10 @@ public final class PropertyReader {
             }
             propertiesHashMap.put(fileName, properties);
         }
+        return propertiesHashMap.get(fileName);
     }
 
-    public static synchronized PropertyReader getPropertyReader() {
+    public static synchronized PropertyReader getInstance() {
         if (propertyReader == null) {
             propertyReader = new PropertyReader();
         }
@@ -53,7 +54,6 @@ public final class PropertyReader {
      * @return the data
      */
     public String getProperty(String fileName, String propKey) {
-        readPropertyFile(fileName);
-        return propertiesHashMap.get(fileName).getProperty(propKey);
+        return readPropertyFile(fileName).getProperty(propKey);
     }
 }
