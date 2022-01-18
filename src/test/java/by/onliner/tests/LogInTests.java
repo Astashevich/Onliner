@@ -22,7 +22,7 @@ public class LogInTests extends AbstractTest {
     private static final String SPACE = " ";
 
     @TestType(value = SMOKE)
-    @Test(description = "[Test-Case ID:[Test-Case ID:ONL_006-ONL_010] Test of log-In form with incorrect test data",
+    @Test(description = "[Test-Case ID:ONL_006-ONL_010] Test of log-In form with incorrect test data",
             dataProvider = "getTestData")
     public void logInWithIncorrectDataTest(String login, String password, String expectedMessage) {
         mainPage.openPage();

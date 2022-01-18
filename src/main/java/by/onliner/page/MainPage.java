@@ -3,17 +3,18 @@ package by.onliner.page;
 import by.onliner.page.components.Footer;
 import by.onliner.core.driver.DriverManager;
 import by.onliner.core.elements.widget.Link;
+import by.onliner.core.properties.EnvironmentConfig;
+import by.onliner.core.utils.Waiter;
+import by.onliner.page.components.Menu;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
-import by.onliner.page.components.Menu;
-import by.onliner.core.utils.Waiter;
+
 import java.util.List;
 import java.util.Random;
 
-import static by.onliner.constants.OnlinerConstants.HOST;
-
 public class MainPage extends AbstractPage {
 
+    private static final String HOST = EnvironmentConfig.getHost();
     private static final int MAX_LIST_SIZE_ON_PAGE = 7;
     private final Menu menu;
     private final Footer footer;
