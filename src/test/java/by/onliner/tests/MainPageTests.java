@@ -6,12 +6,13 @@ import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static by.onliner.constants.OnlinerConstants.ABOUT_LINK;
 import static by.onliner.constants.TestType.SMOKE;
 import static by.onliner.core.utils.EqualsUtil.equalContains;
 
 @Feature("MainPage")
 public class MainPageTests extends AbstractTest {
+
+    private static final String ABOUT_LINK = "/about";
 
     @TestType(value = SMOKE)
     @Test(description = "[Test-Case ID:ONL_005] Test for opening the 'About' page")
