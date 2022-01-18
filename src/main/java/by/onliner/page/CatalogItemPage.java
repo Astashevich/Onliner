@@ -1,6 +1,7 @@
 package by.onliner.page;
 
 import by.onliner.core.elements.widget.Button;
+import by.onliner.core.elements.widget.Text;
 import by.onliner.page.components.Menu;
 import by.onliner.page.components.ShoppingCartPopup;
 import by.onliner.core.utils.Waiter;
@@ -17,6 +18,9 @@ public class CatalogItemPage extends AbstractPage {
 
     @FindBy(linkText = "В корзине")
     private Button greenShoppingCartButton;
+
+    @FindBy(className = "catalog-masthead__title")
+    private Text itemName;
 
     public CatalogItemPage() {
         super();
@@ -49,5 +53,16 @@ public class CatalogItemPage extends AbstractPage {
         if (shoppingCartPopup.isShoppingCartPopupVisible()) {
             shoppingCartPopup.closeShoppingCartPopup();
         }
+    }
+
+    /***
+     * Get the item name from title
+     * @return name of the item
+     */
+    @Step("Get item name")
+    public String getItemName() {
+        Waiter.waitForVisibility(itemName);
+        logger.info(String.format("Get item name [%s]", itemName.getText()));
+        return itemName.getText().trim();
     }
 }

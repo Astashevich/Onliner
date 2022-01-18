@@ -10,7 +10,7 @@ public abstract class AbstractComponent {
 
     protected final Logger logger = LogManager.getLogger(this);
 
-    private WebDriver driver;
+    protected WebDriver driver;
 
     public AbstractComponent() {
         driver = DriverManager.getDriver();
