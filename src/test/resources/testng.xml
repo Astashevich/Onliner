@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Onliner Suite">
-    <suite-files>
-        <suite-file path="tests/shoppingCartTest.xml"/>
-        <suite-file path="tests/catalogTest.xml"/>
-        <suite-file path="tests/mainTest.xml"/>
-        <suite-file path="tests/logInTest.xml"/>
-    </suite-files>
+<suite name="Onliner Suite" thread-count="2" verbose="1" parallel="tests">
+    <listeners>
+        <listener class-name="by.onliner.core.transformer.AnnotationTransformer"/>
+    </listeners>
+    <test name="Shopping cart tests">
+        <classes>
+            <class name="by.onliner.tests.ShoppingCartTests"/>
+        </classes>
+    </test>
+    <test name="Catalog tests">
+        <classes>
+            <class name="by.onliner.tests.CatalogTests"/>
+        </classes>
+    </test>
+    <test name="Main tests">
+        <classes>
+            <class name="by.onliner.tests.MainPageTests"/>
+        </classes>
+    </test>
+    <test name="Log-In tests">
+        <classes>
+            <class name="by.onliner.tests.LogInTests"/>
+        </classes>
+    </test>
 </suite>
