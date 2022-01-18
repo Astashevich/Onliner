@@ -14,10 +14,9 @@ public class EnvironmentConfig {
     private static final String HOST = "host";
     private static final Properties properties;
 
-    private final static String ENVIRONMENT_PROPERTIES_FILENAME = String.format("application-%s.properties", Environment.getEnvironment().getName());
-
     static {
-        properties = PropertyReader.getInstance().readPropertyFile(ENVIRONMENT_PROPERTIES_FILENAME);
+        String environmentPropertiesFileName = String.format("application-%s.properties", Environment.getEnvironment().getName());
+        properties = PropertyReader.getInstance().readPropertyFile(environmentPropertiesFileName);
     }
 
     public static String getHost() {
