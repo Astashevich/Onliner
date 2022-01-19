@@ -81,5 +81,4 @@ All the needed objects and files are attached to the report.
 ```allure serve target/allure-results```
 
 - To generate test result report run next command in terminal :
-
 ```allure generate target/allure-results ```
