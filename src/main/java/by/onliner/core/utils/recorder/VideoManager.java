@@ -28,7 +28,7 @@ public class VideoManager {
         if (current != null) {
             current.stopRecording(name);
         }
-        threadRecorder.set(null);
+        threadRecorder.remove();
     }
 
     private static VideoRecorder getNewRecorder() {
