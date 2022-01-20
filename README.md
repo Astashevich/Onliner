@@ -16,7 +16,7 @@ And next plugins :
 - Maven surefire plugin.
 - Maven compiler plugin.
 
-##TAF Features overview:
+## TAF Features overview:
 
 1. Failed tests are rerun 2 times;
 
