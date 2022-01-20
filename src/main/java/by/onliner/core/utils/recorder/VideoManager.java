@@ -1,4 +1,4 @@
-package by.onliner.core.recorder;
+package by.onliner.core.utils.recorder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

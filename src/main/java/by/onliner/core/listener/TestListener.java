@@ -1,8 +1,8 @@
 package by.onliner.core.listener;
 
 import by.onliner.core.driver.DriverManager;
-import by.onliner.core.properties.BrowserConfig;
-import by.onliner.core.recorder.VideoManager;
+import by.onliner.core.configer.BrowserConfig;
+import by.onliner.core.utils.recorder.VideoManager;
 import by.onliner.core.utils.FileUtil;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Files;

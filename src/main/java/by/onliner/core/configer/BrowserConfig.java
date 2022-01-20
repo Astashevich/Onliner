@@ -1,4 +1,4 @@
-package by.onliner.core.properties;
+package by.onliner.core.configer;
 
 import by.onliner.core.driver.DriverFactory.BrowserType;
 
