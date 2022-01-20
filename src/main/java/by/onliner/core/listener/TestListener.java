@@ -44,7 +44,7 @@ public class TestListener implements ITestListener {
         logger.info("The test class run started on " + context.getStartDate());
         allureEnvironmentWriter(
                 ImmutableMap.<String, String>builder()
-                        .put("Browser", getBrowser())
+                        .put("Browser", BrowserConfig.getType().getName())
                         .build(), System.getProperty("user.dir")
                         + "/target/allure-results/");
     }
@@ -167,27 +167,6 @@ public class TestListener implements ITestListener {
             logger.info("attachVideoToAllure(): FAILED\n" + e.getMessage());
             return new byte[0];
         }
-    }
-
-    private String getBrowser() {
-        String browser;
-        switch (BrowserConfig.getType()) {
-            case FIREFOX:
-                browser = "Firefox";
-                break;
-            case CHROME:
-                browser = "Chrome";
-                break;
-            case EDGE:
-                browser = "Edge";
-                break;
-            case OPERA:
-                browser = "Opera";
-                break;
-            default:
-                throw new RuntimeException("Incorrect browser");
-        }
-        return browser;
     }
 
     private int getThreadCount() {
