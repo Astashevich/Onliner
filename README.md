@@ -32,7 +32,7 @@ And next plugins :
 
 Launch examples.
 
-####Running tests from command line :
+#### Running tests from command line :
 ```mvn clean test```
 
 Test cases can be run with next options :
@@ -67,7 +67,7 @@ Next command will run all the tests in selected Browser :
 
 ```mvn test -Dbrowser=edge```
 
-####Running tests in IDE :
+#### Running tests in IDE :
 
 - Right click on the testng.xml -> Run Test;
 
