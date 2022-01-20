@@ -2,6 +2,8 @@ package by.onliner.core.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.DriverManagerType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,7 +16,16 @@ import org.openqa.selenium.opera.OperaOptions;
 
 public class DriverFactory {
 
-    public enum BrowserType {FIREFOX, CHROME, EDGE, OPERA}
+    @Getter
+    @AllArgsConstructor
+    public enum BrowserType {
+        FIREFOX("Firefox"),
+        CHROME("Chrome"),
+        EDGE("Edge"),
+        OPERA("Opera");
+
+        String name;
+    }
 
     /***
      * Chooses a webdriver of a defined type

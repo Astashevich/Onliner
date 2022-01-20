@@ -37,7 +37,7 @@ public class EnvironmentConfig {
             return Environment.readValue(environment);
         }
 
-        public static Environment readValue(String text) {
+        private static Environment readValue(String text) {
             return Arrays.stream(Environment.values())
                     .filter(environment -> environment.getName().equalsIgnoreCase(text))
                     .findFirst()

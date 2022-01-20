@@ -3,6 +3,7 @@ package by.onliner;
 import by.onliner.core.driver.DriverFactory;
 import by.onliner.core.driver.DriverManager;
 import by.onliner.core.listener.TestListener;
+import by.onliner.core.properties.BrowserConfig;
 import by.onliner.page.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,7 +26,7 @@ public abstract class AbstractTest {
      */
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        DriverManager.setDriver(DriverFactory.getDriver(DriverFactory.BrowserType.CHROME));
+        DriverManager.setDriver(DriverFactory.getDriver(BrowserConfig.getType()));
         mainPage = new MainPage();
         catalogPageItem = new CatalogItemPage();
         shoppingCartPage = new ShoppingCartPage();

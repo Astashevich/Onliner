@@ -1,6 +1,7 @@
 package by.onliner.core.listener;
 
 import by.onliner.core.driver.DriverManager;
+import by.onliner.core.properties.BrowserConfig;
 import by.onliner.core.recorder.VideoManager;
 import by.onliner.core.utils.FileUtil;
 import com.google.common.collect.ImmutableMap;
@@ -14,6 +15,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,13 +31,20 @@ public class TestListener implements ITestListener {
 
     protected final Logger logger = LogManager.getLogger(this);
 
+    /***
+     * This method is called before suite get Started.
+     */
+    @BeforeSuite
+    public void onSuiteStart(ITestContext context) {
+        context.getCurrentXmlTest().getSuite().setThreadCount(getThreadCount());
+    }
+
     @Override
     public void onStart(ITestContext context) {
         logger.info("The test class run started on " + context.getStartDate());
         allureEnvironmentWriter(
                 ImmutableMap.<String, String>builder()
-                        .put("Browser", "Chrome")
-                        .put("Browser.Version", "96.0.4664.110 (Official build), (64 bit)")
+                        .put("Browser", BrowserConfig.getType().getName())
                         .build(), System.getProperty("user.dir")
                         + "/target/allure-results/");
     }
@@ -158,5 +167,10 @@ public class TestListener implements ITestListener {
             logger.info("attachVideoToAllure(): FAILED\n" + e.getMessage());
             return new byte[0];
         }
+    }
+
+    private int getThreadCount() {
+        String count = System.getProperty("threadCount");
+        return Integer.parseInt(count);
     }
 }

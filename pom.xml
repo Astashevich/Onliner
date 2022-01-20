@@ -142,6 +142,8 @@
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <env>LOCAL</env>
+                        <browser>CHROME</browser>
+                        <threadCount>2</threadCount>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>
