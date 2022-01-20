@@ -46,6 +46,7 @@ Default Options:
 - Browser = Chrome;
 - Environment = Local;
 - Threads-count = 2;
+- Video = false;
 
 Set Options:
 
@@ -55,9 +56,13 @@ Set Options:
 
 ```-DtreadCount={treadCount}```
 
+```-Dvideo={video}```
+
 Supported Browsers: ```Chrome, Edge, Opera, Firefox```
 
 Environment: ```LOCAL, QA, DEV```
+
+Video: ```true, false```
 
 Next command will run all the tests on QA environment in Opera browser with one thread:
 
@@ -66,6 +71,10 @@ Next command will run all the tests on QA environment in Opera browser with one 
 Next command will run all the tests in selected Browser :
 
 ```mvn test -Dbrowser=edge```
+
+Next command will run all the tests with video recorder and one thread (RECOMMENDED) :
+
+```mvn clean test -Dvideo=true -DtreadCount=1```
 
 #### Running tests in IDE :
 
