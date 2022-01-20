@@ -1,5 +1,6 @@
-package by.onliner.core.properties;
+package by.onliner.core.configer;
 
+import by.onliner.core.utils.PropertyReader;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

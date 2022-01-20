@@ -3,7 +3,7 @@ package by.onliner.page;
 import by.onliner.page.components.Footer;
 import by.onliner.core.driver.DriverManager;
 import by.onliner.core.elements.widget.Link;
-import by.onliner.core.properties.EnvironmentConfig;
+import by.onliner.core.configer.EnvironmentConfig;
 import by.onliner.core.utils.Waiter;
 import by.onliner.page.components.Menu;
 import io.qameta.allure.Step;

@@ -1,4 +1,4 @@
-package by.onliner.core.recorder;
+package by.onliner.core.utils.recorder;
 
 import by.onliner.core.driver.DriverManager;
 import org.monte.media.Format;

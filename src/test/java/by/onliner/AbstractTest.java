@@ -3,7 +3,7 @@ package by.onliner;
 import by.onliner.core.driver.DriverFactory;
 import by.onliner.core.driver.DriverManager;
 import by.onliner.core.listener.TestListener;
-import by.onliner.core.properties.BrowserConfig;
+import by.onliner.core.configer.BrowserConfig;
 import by.onliner.page.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
